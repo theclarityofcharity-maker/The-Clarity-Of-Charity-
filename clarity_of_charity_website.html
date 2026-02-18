@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Clarity of Charity | For Child Survivors of Human Trafficking</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #F7F3EE; --warm-white: #FDFAF7; --deep-navy: #0E1C2F; --midnight: #0A1520;
+  --gold: #C8953A; --gold-light: #E8B96A; --rose: #9B5060; --sage: #6A8E7E;
+  --text: #2A2018; --text-light: #6B5D52; --border: rgba(200,149,58,0.22);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 3rem; background: rgba(247,243,238,0.95);
+  backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); transition: box-shadow 0.3s;
+}
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; letter-spacing: 0.1em; color: var(--deep-navy); text-decoration: none; text-transform: uppercase; }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+.nav-links a { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-donate { color: var(--warm-white) !important; background: var(--deep-navy); padding: 0.55rem 1.3rem !important; border-radius: 2px; transition: background 0.2s !important; }
+.nav-donate:hover { background: var(--gold) !important; color: var(--warm-white) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { width: 24px; height: 1.5px; background: var(--deep-navy); display: block; }
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 8rem 2rem 6rem;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,149,58,0.09) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 20% 80%, rgba(155,80,96,0.07) 0%, transparent 60%), var(--cream);
+  position: relative; overflow: hidden;
+}
+.hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C8953A' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); }
+.hero-eyebrow { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.8rem; animation: fadeUp 0.8s ease both; }
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 300; line-height: 1.1; color: var(--deep-navy); margin-bottom: 0.5rem; animation: fadeUp 0.8s 0.15s ease both; }
+.hero h1 em { font-style: italic; color: var(--rose); }
+.hero-sub { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 2.5vw, 1.5rem); font-weight: 300; font-style: italic; color: var(--text-light); margin-bottom: 2rem; animation: fadeUp 0.8s 0.3s ease both; }
+.hero-desc { max-width: 560px; font-size: 0.92rem; font-weight: 300; line-height: 1.9; color: var(--text-light); margin-bottom: 3rem; animation: fadeUp 0.8s 0.45s ease both; }
+.hero-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center; animation: fadeUp 0.8s 0.6s ease both; }
+.btn-primary { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--warm-white); background: var(--deep-navy); padding: 1rem 2.4rem; border-radius: 2px; text-decoration: none; transition: all 0.25s; border: 1.5px solid var(--deep-navy); }
+.btn-primary:hover { background: var(--gold); border-color: var(--gold); }
+.btn-secondary { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--deep-navy); background: transparent; padding: 1rem 2.4rem; border-radius: 2px; text-decoration: none; transition: all 0.25s; border: 1.5px solid rgba(14,28,47,0.3); }
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+.hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; animation: fadeUp 0.8s 0.9s ease both; }
+.hero-scroll span { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-light); }
+.scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+.stats-band { background: var(--deep-navy); padding: 3.5rem 3rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--gold-light); line-height: 1; }
+.stat-label { font-size: 0.68rem; font-weight: 300; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(253,250,247,0.5); margin-top: 0.6rem; line-height: 1.7; }
+.section-label { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; display: block; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: var(--deep-navy); line-height: 1.2; margin-bottom: 1.5rem; }
+.section-title em { font-style: italic; color: var(--rose); }
+.section-body { font-size: 0.92rem; font-weight: 300; line-height: 1.9; color: var(--text-light); }
+.mission-wrap { max-width: 1200px; margin: 0 auto; padding: 6rem 3rem; }
+.mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.mission-text p + p { margin-top: 1.2rem; }
+.mission-quote-block { background: var(--deep-navy); padding: 3.5rem; border-radius: 3px; position: relative; }
+.mission-quote-block::before { content: '\201C'; font-family: 'Cormorant Garamond', serif; font-size: 8rem; line-height: 0.6; color: var(--gold); opacity: 0.25; position: absolute; top: 2rem; left: 2rem; }
+.mission-quote-block blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 300; font-style: italic; color: var(--warm-white); line-height: 1.65; position: relative; z-index: 1; }
+.mission-quote-block cite { display: block; margin-top: 1.5rem; font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); font-style: normal; }
+.mission-visual { position: relative; }
+.mission-accent-box { position: absolute; bottom: -1.5rem; right: -1.5rem; width: 65%; height: 65%; border: 1.5px solid var(--border); border-radius: 3px; z-index: -1; }
+.pillars { background: var(--warm-white); padding: 6rem 3rem; }
+.pillars-inner { max-width: 1200px; margin: 0 auto; }
+.pillars-header { text-align: center; margin-bottom: 4rem; }
+.pillars-header .section-body { margin: 0 auto; max-width: 560px; }
+.pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.pillar-card { padding: 3rem 2.5rem; border-radius: 3px; border: 1px solid var(--border); background: var(--cream); position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+.pillar-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(14,28,47,0.1); }
+.pillar-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.pillar-card.mind::before { background: var(--sage); }
+.pillar-card.body::before { background: var(--rose); }
+.pillar-card.spirit::before { background: var(--gold); }
+.pillar-icon { font-family: 'Cormorant Garamond', serif; font-size: 3rem; line-height: 1; margin-bottom: 1.5rem; }
+.pillar-card.mind .pillar-icon { color: var(--sage); }
+.pillar-card.body .pillar-icon { color: var(--rose); }
+.pillar-card.spirit .pillar-icon { color: var(--gold); }
+.pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--deep-navy); margin-bottom: 1rem; }
+.pillar-text { font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: var(--text-light); }
+.why-wrap { max-width: 1200px; margin: 0 auto; padding: 6rem 3rem; }
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+.fact-card { padding: 2.5rem; border-left: 2px solid var(--gold); background: rgba(200,149,58,0.04); }
+.fact-number { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--gold); line-height: 1; }
+.fact-desc { font-size: 0.87rem; font-weight: 300; line-height: 1.85; color: var(--text-light); margin-top: 0.7rem; }
+.community { background: var(--deep-navy); padding: 6rem 3rem; text-align: center; }
+.community-inner { max-width: 800px; margin: 0 auto; }
+.community .section-label { color: var(--gold-light); }
+.community .section-title { color: var(--warm-white); }
+.community .section-title em { color: var(--gold-light); }
+.community .section-body { color: rgba(253,250,247,0.65); max-width: 680px; margin: 0 auto 1.5rem; }
+.community-closing { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: rgba(253,250,247,0.88); margin-top: 1rem; line-height: 1.6; }
+.donate-section { padding: 6rem 3rem; background: var(--cream); }
+.donate-inner { max-width: 1100px; margin: 0 auto; }
+.donate-header { text-align: center; margin-bottom: 4rem; }
+.donate-header p { font-size: 0.92rem; font-weight: 300; line-height: 1.9; color: var(--text-light); max-width: 560px; margin: 0 auto; }
+.donate-paypal { text-align: center; margin-bottom: 4rem; padding: 3rem; border: 1px solid var(--border); border-radius: 3px; background: var(--warm-white); }
+.donate-paypal p { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); margin-bottom: 1.5rem; }
+.btn-paypal { display: inline-block; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warm-white); background: var(--deep-navy); padding: 1.1rem 3rem; border-radius: 2px; text-decoration: none; transition: all 0.25s; }
+.btn-paypal:hover { background: var(--gold); }
+.crypto-section-label { font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-light); text-align: center; margin-bottom: 2rem; display: block; }
+.crypto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem; }
+.crypto-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 3px; padding: 1.5rem 1.8rem; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; }
+.crypto-card:hover { border-color: var(--gold); box-shadow: 0 8px 30px rgba(200,149,58,0.12); }
+.crypto-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
+.crypto-symbol { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--gold); }
+.crypto-name { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); }
+.crypto-address { font-family: 'Courier New', monospace; font-size: 0.7rem; color: var(--text); word-break: break-all; line-height: 1.6; background: var(--cream); padding: 0.7rem 0.9rem; border-radius: 2px; }
+.copy-hint { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(200,149,58,0.6); margin-top: 0.5rem; display: block; transition: color 0.2s; }
+.crypto-card:hover .copy-hint { color: var(--gold); }
+.report-section { background: var(--rose); padding: 4rem 3rem; text-align: center; }
+.report-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; color: var(--warm-white); margin-bottom: 1rem; }
+.report-section p { font-size: 0.88rem; font-weight: 300; color: rgba(253,250,247,0.85); max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.8; }
+.hotlines { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+.hotline { background: rgba(255,255,255,0.15); padding: 0.9rem 1.8rem; border-radius: 2px; border: 1px solid rgba(255,255,255,0.25); }
+.hotline-name { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 0.3rem; }
+.hotline-num { font-size: 1.05rem; font-weight: 400; color: var(--warm-white); }
+.involve-wrap { max-width: 1100px; margin: 0 auto; padding: 6rem 3rem; }
+.involve-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.involve-card { padding: 2.5rem 2rem; border: 1px solid var(--border); border-radius: 3px; text-align: center; transition: all 0.3s; }
+.involve-card:hover { border-color: var(--gold); background: rgba(200,149,58,0.04); }
+.involve-number { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--gold); opacity: 0.4; line-height: 1; margin-bottom: 1rem; }
+.involve-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: var(--deep-navy); margin-bottom: 0.8rem; }
+.involve-text { font-size: 0.85rem; font-weight: 300; line-height: 1.8; color: var(--text-light); }
+.involve-link { display: inline-block; margin-top: 1rem; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); text-decoration: none; font-weight: 500; }
+footer { background: var(--midnight); padding: 4rem 3rem 2.5rem; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem; }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; letter-spacing: 0.1em; color: var(--warm-white); text-transform: uppercase; margin-bottom: 1rem; display: block; }
+.footer-tagline { font-size: 0.8rem; font-weight: 300; color: rgba(253,250,247,0.4); line-height: 1.8; max-width: 280px; }
+.footer-col h4 { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.2rem; }
+.footer-col a, .footer-col p { display: block; font-size: 0.82rem; font-weight: 300; color: rgba(253,250,247,0.45); text-decoration: none; margin-bottom: 0.6rem; line-height: 1.6; transition: color 0.2s; }
+.footer-col a:hover { color: var(--gold-light); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-bottom p { font-size: 0.72rem; color: rgba(253,250,247,0.25); font-weight: 300; }
+.toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--deep-navy); color: var(--warm-white); padding: 0.8rem 2rem; border-radius: 2px; border-left: 3px solid var(--gold); font-size: 0.78rem; letter-spacing: 0.08em; opacity: 0; transition: all 0.3s; pointer-events: none; z-index: 999; white-space: nowrap; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scrollPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream); padding: 1.5rem; border-bottom: 1px solid var(--border); gap: 1.2rem; }
+  .hamburger { display: flex; }
+  .stats-band { grid-template-columns: repeat(2,1fr); padding: 2.5rem 1.5rem; }
+  .mission-grid, .pillars-grid, .why-grid, .involve-grid { grid-template-columns: 1fr; }
+  .mission-wrap, .why-wrap, .involve-wrap { padding: 4rem 1.5rem; }
+  .pillars, .community, .donate-section, .report-section { padding: 4rem 1.5rem; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .mission-accent-box { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">The Clarity of Charity</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#community">Our Vision</a></li>
+    <li><a href="#involve">Get Involved</a></li>
+    <li><a href="#donate" class="nav-donate">Donate</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-eyebrow">We Are All Children of the Universe</div>
+  <h1>Rise in the Fight for<br><em>Innocent Lives</em></h1>
+  <p class="hero-sub">Operation: The Return to Innocence</p>
+  <p class="hero-desc">The Clarity of Charity exists to develop holistic aftercare communities and therapeutic safe-home environments for child survivors of human trafficking across North America — healing mind, body, and spirit.</p>
+  <div class="hero-actions">
+    <a href="#donate" class="btn-primary">Support the Mission</a>
+    <a href="#mission" class="btn-secondary">Learn More</a>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<div class="stats-band">
+  <div class="reveal"><div class="stat-num">40M</div><div class="stat-label">People living in modern slavery worldwide</div></div>
+  <div class="reveal"><div class="stat-num">12–14</div><div class="stat-label">Average age a teen enters the sex trade in North America</div></div>
+  <div class="reveal"><div class="stat-num">40%</div><div class="stat-label">Of child victims recruited by family or close friends</div></div>
+  <div class="reveal"><div class="stat-num">$150B</div><div class="stat-label">Annual revenue of the human trafficking industry globally</div></div>
+</div>
+
+<div class="mission-wrap" id="mission">
+  <div class="mission-grid">
+    <div class="mission-text reveal">
+      <span class="section-label">Our Mission</span>
+      <h2 class="section-title">Healing is Possible.<br><em>Innocence Can Be Restored.</em></h2>
+      <p class="section-body">Human trafficking is the second most lucrative crime in the world. Every minute of every day, children are being exploited, sold, and silenced. The Clarity of Charity was founded on the unwavering conviction that these children deserve more than rescue — they deserve to truly heal.</p>
+      <p class="section-body" style="margin-top:1.2rem;">Our mission is to create quality holistic aftercare communities where displaced child survivors receive compassionate, long-term care to grow, thrive, and reclaim their lives. Because rescue is only the beginning.</p>
+      <p class="section-body" style="margin-top:1.2rem;">We aspire to expand with healing sanctuaries across North America, and to unite directly with rescue operations on the front lines — bringing rescue and restoration together as one seamless, powerful movement.</p>
+    </div>
+    <div class="mission-visual reveal">
+      <div class="mission-quote-block">
+        <blockquote>"Healing yourself is connected with healing others. When we learn how to heal ourselves, we heal our family, our community — and the ripple effect positively impacts the world."</blockquote>
+        <cite>— Jennifer Coburn, Founder</cite>
+      </div>
+      <div class="mission-accent-box"></div>
+    </div>
+  </div>
+</div>
+
+<section class="pillars" id="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header reveal">
+      <span class="section-label">How We Heal</span>
+      <h2 class="section-title">Three Pillars of <em>Survivor Care</em></h2>
+      <p class="section-body">Trauma fragments the soul. True healing must address the whole person — every dimension of their being.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card mind reveal">
+        <div class="pillar-icon">◈</div>
+        <h3 class="pillar-title">Mind</h3>
+        <p class="pillar-text">Trauma-focused cognitive behavioural therapy, complex trauma-informed care, and professional support for survivors of extreme sexual abuse. Children are given a clear understanding of their pain — and shown what healing and health truly look like.</p>
+      </div>
+      <div class="pillar-card body reveal">
+        <div class="pillar-icon">◈</div>
+        <h3 class="pillar-title">Body</h3>
+        <p class="pillar-text">Medical care addressing physical trauma, malnutrition, infection, and the lasting health consequences of repeated abuse. Our communities are staffed 24 hours a day, 7 days a week by trauma-informed specialists whose life mission is to assist in healing with love and compassion.</p>
+      </div>
+      <div class="pillar-card spirit reveal">
+        <div class="pillar-icon">◈</div>
+        <h3 class="pillar-title">Spirit</h3>
+        <p class="pillar-text">Safe, unconditionally loving communities where children are cherished and nurtured on their empowering healing journey. The body heals with play. The mind heals with laughter. The spirit heals with joy — and every child deserves joy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="why-wrap" id="why">
+  <span class="section-label reveal">The Reality</span>
+  <h2 class="section-title reveal">What Is Happening <em>Right Now</em></h2>
+  <div class="why-grid">
+    <div class="fact-card reveal"><div class="fact-number">24.9M</div><p class="fact-desc">Estimated victims of human trafficking within North America — a sophisticated, rapidly expanding criminal network operating with very little risk of detection.</p></div>
+    <div class="fact-card reveal"><div class="fact-number">2–7 yrs</div><p class="fact-desc">The average age of children in the most devastating forms of exploitation — targeted by an industry worth $99 billion annually in child pornography and sex slavery.</p></div>
+    <div class="fact-card reveal"><div class="fact-number">Critical Gap</div><p class="fact-desc">There is a severe shortage of safe housing and quality aftercare for trafficked children. Many survivors cycle back into exploitation after inadequate care — because true healing takes years, not days.</p></div>
+    <div class="fact-card reveal"><div class="fact-number">You Matter</div><p class="fact-desc">The current system fails these children. Corruption, limited resources, and the absence of long-term trauma-informed care leave survivors without what they need most. We exist to fill that void — with your help.</p></div>
+  </div>
+</div>
+
+<section class="community" id="community">
+  <div class="community-inner">
+    <span class="section-label reveal">Our Vision</span>
+    <h2 class="section-title reveal">A Community Built on <em>Belonging</em></h2>
+    <p class="section-body reveal">What we are building is more than a facility — it is a community. The children who come through our doors will have experienced traumas so profound that even with deep healing, they carry a world within them that few outside can truly understand or relate to.</p>
+    <p class="section-body reveal">Rather than reintegrating these children prematurely into environments where they may feel further isolated or misunderstood, our model is built with great intentionality: these children will heal and grow together, surrounded by peers who share similar lived experiences. Within this community they will find something rare and irreplaceable — the safety of being truly known, the comfort of not having to explain, and the strength that comes from rising together.</p>
+    <p class="community-closing reveal">This is not seclusion. This is belonging.<br>This is the foundation upon which genuine healing is built.</p>
+  </div>
+</section>
+
+<section class="donate-section" id="donate">
+  <div class="donate-inner">
+    <div class="donate-header reveal">
+      <span class="section-label">Make a Difference</span>
+      <h2 class="section-title">Your Gift Gives a Child <em>The Return to Innocence</em></h2>
+      <p>Every contribution — no matter the size — moves us closer to building the healing spaces these children so desperately need. A minimum of 80% of all donations go directly to programs and the children we serve.</p>
+    </div>
+    <div class="donate-paypal reveal">
+      <p>Donate securely with credit card or PayPal</p>
+      <a href="https://www.paypal.com/donate/?hosted_button_id=WAK3XVPFY3LQC" target="_blank" class="btn-paypal">Donate via PayPal</a>
+    </div>
+    <span class="crypto-section-label reveal">Or donate with cryptocurrency — click any address to copy</span>
+    <div class="crypto-grid">
+      <div class="crypto-card reveal" onclick="copyAddress(this,'bc1qhj049tl86g9hwquvzwelqn2qsu7shus3k5gjlr')">
+        <div class="crypto-header"><span class="crypto-symbol">₿</span><span class="crypto-name">Bitcoin (BTC)</span></div>
+        <div class="crypto-address">bc1qhj049tl86g9hwquvzwelqn2qsu7shus3k5gjlr</div>
+        <span class="copy-hint">Click to copy address</span>
+      </div>
+      <div class="crypto-card reveal" onclick="copyAddress(this,'0x2a67cc8a1045ad710acffac848d96971688a8e9d')">
+        <div class="crypto-header"><span class="crypto-symbol">Ξ</span><span class="crypto-name">Ethereum / USDC / USDT (ERC-20)</span></div>
+        <div class="crypto-address">0x2a67cc8a1045ad710acffac848d96971688a8e9d</div>
+        <span class="copy-hint">Click to copy address</span>
+      </div>
+      <div class="crypto-card reveal" onclick="copyAddress(this,'3USSRQ5SSU3t6aZdFxcfzcHeG3JaVVeVqspeD8uSruwr')">
+        <div class="crypto-header"><span class="crypto-symbol">◎</span><span class="crypto-name">Solana (SOL)</span></div>
+        <div class="crypto-address">3USSRQ5SSU3t6aZdFxcfzcHeG3JaVVeVqspeD8uSruwr</div>
+        <span class="copy-hint">Click to copy address</span>
+      </div>
+      <div class="crypto-card reveal" onclick="copyAddress(this,'rsf3jr5VCu73xMLNGPyXfmrYuobDW1B9qy')">
+        <div class="crypto-header"><span class="crypto-symbol">✕</span><span class="crypto-name">XRP (Ripple)</span></div>
+        <div class="crypto-address">rsf3jr5VCu73xMLNGPyXfmrYuobDW1B9qy</div>
+        <span class="copy-hint">Click to copy address</span>
+      </div>
+      <div class="crypto-card reveal" onclick="copyAddress(this,'DEhqxTvsXTqws1njoDftpdSWW3sRX2DUe2')">
+        <div class="crypto-header"><span class="crypto-symbol">Ð</span><span class="crypto-name">Dogecoin (DOGE)</span></div>
+        <div class="crypto-address">DEhqxTvsXTqws1njoDftpdSWW3sRX2DUe2</div>
+        <span class="copy-hint">Click to copy address</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="report-section">
+  <h2>If You Suspect a Child Is in Danger — <em style="font-style:italic;">Report It Now</em></h2>
+  <p>It is your moral obligation and human responsibility to take action. By intervening, you might spare a child lifelong trauma — or save their life.</p>
+  <div class="hotlines">
+    <div class="hotline"><div class="hotline-name">Canada &amp; USA</div><div class="hotline-num">1-800-387-5437</div></div>
+    <div class="hotline"><div class="hotline-name">National Human Trafficking Hotline</div><div class="hotline-num">1-888-373-7888</div></div>
+    <div class="hotline"><div class="hotline-name">Missing &amp; Exploited Children</div><div class="hotline-num">1-800-843-5678</div></div>
+    <div class="hotline"><div class="hotline-name">International</div><div class="hotline-num">+1-780-427-9485</div></div>
+  </div>
+</section>
+
+<div class="involve-wrap" id="involve">
+  <span class="section-label reveal">Join the Movement</span>
+  <h2 class="section-title reveal">There Are Many Ways to <em>Be the Change</em></h2>
+  <div class="involve-grid">
+    <div class="involve-card reveal">
+      <div class="involve-number">01</div>
+      <h3 class="involve-title">Donate</h3>
+      <p class="involve-text">Every gift — large or small, fiat or crypto — directly supports the development of healing programs and safe communities for child survivors. Your compassion is the fuel of this mission.</p>
+      <a href="#donate" class="involve-link">Give now →</a>
+    </div>
+    <div class="involve-card reveal">
+      <div class="involve-number">02</div>
+      <h3 class="involve-title">Volunteer</h3>
+      <p class="involve-text">We welcome people with servant hearts and empowering spirits. Skills in social media, writing, administration, legal, finance, and social work are especially valued right now.</p>
+      <a href="mailto:theclarityofcharity@gmail.com?subject=Volunteer Inquiry" class="involve-link">Get in touch →</a>
+    </div>
+    <div class="involve-card reveal">
+      <div class="involve-number">03</div>
+      <h3 class="involve-title">Spread the Word</h3>
+      <p class="involve-text">Share our mission with your community. Follow us on Facebook and Instagram. Talk about this. Awareness is the first step toward action — and action saves lives.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <span class="footer-logo">The Clarity of Charity</span>
+        <p class="footer-tagline">Manifesting meaningful connections for more fulfilling lives. Dedicated to the countless unseen, unheard and unknown child victims — the most innocent of souls. Past, present and future.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="#mission">Our Mission</a>
+        <a href="#community">Our Vision</a>
+        <a href="#donate">Donate</a>
+        <a href="#involve">Get Involved</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:theclarityofcharity@gmail.com">theclarityofcharity@gmail.com</a>
+        <h4 style="margin-top:1.5rem;">Follow</h4>
+        <a href="https://facebook.com" target="_blank">Facebook</a>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 The Clarity of Charity Inc. · Alberta Non-Profit Corporation · All rights reserved.</p>
+      <p>Founded by Jennifer Coburn · Operation: The Return to Innocence</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Address copied to clipboard ✓</div>
+
+<script>
+function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+function copyAddress(card, address) {
+  navigator.clipboard.writeText(address).then(() => {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+    const hint = card.querySelector('.copy-hint');
+    hint.textContent = 'Copied!';
+    hint.style.color = 'var(--gold)';
+    setTimeout(() => { hint.textContent = 'Click to copy address'; hint.style.color = ''; }, 2500);
+  });
+}
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.boxShadow = window.scrollY > 40 ? '0 4px 30px rgba(14,28,47,0.08)' : 'none';
+});
+</script>
+</body>
+</html>
