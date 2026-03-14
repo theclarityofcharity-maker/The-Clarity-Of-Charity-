@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Become an Auction Host — The Clarity of Charity</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy:   #12213a;
+  --navy2:  #1a2f52;
+  --gold:   #c8883a;
+  --gold2:  #e8a558;
+  --cream:  #faf6f0;
+  --cream2: #f0e8da;
+  --text:   #1a1a1f;
+  --muted:  #6b6560;
+  --white:  #ffffff;
+  --error:  #c0392b;
+  --success:#2d6a4f;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Crimson Pro', Georgia, serif;
+  background: var(--cream);
+  color: var(--text);
+  font-size: 19px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── NAV ──────────────────────────────────────────── */
+nav {
+  background: var(--navy);
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+.nav-brand {
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+.nav-brand span { color: var(--cream); font-weight: 400; }
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--cream2);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  font-family: 'DM Mono', monospace;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+/* ── HERO ─────────────────────────────────────────── */
+.hero {
+  background: var(--navy);
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 40px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(200,136,58,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 20% 80%, rgba(200,136,58,0.06) 0%, transparent 60%);
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(200,136,58,0.15);
+  border: 1px solid rgba(200,136,58,0.4);
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  padding: 6px 18px;
+  border-radius: 2px;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 6vw, 4.8rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.08;
+  margin-bottom: 12px;
+  position: relative;
+}
+.hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+}
+.hero-sub {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--cream2);
+  font-style: italic;
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-desc {
+  max-width: 580px;
+  margin: 0 auto 48px;
+  color: rgba(250,246,240,0.75);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+.hero-cta {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 16px 44px;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+.hero-cta:hover { background: var(--gold2); transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(200,136,58,0.2);
+  position: relative;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  color: rgba(250,246,240,0.5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+/* ── SECTION COMMON ───────────────────────────────── */
+section { padding: 90px 40px; }
+.container { max-width: 900px; margin: 0 auto; }
+.container-wide { max-width: 1100px; margin: 0 auto; }
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.section-title em { color: var(--gold); font-style: italic; }
+.divider {
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+  margin-bottom: 36px;
+}
+
+/* ── WHAT IS THIS ─────────────────────────────────── */
+.what-is { background: var(--white); }
+.what-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  margin-top: 40px;
+}
+.what-text p { margin-bottom: 20px; color: var(--text); }
+.what-text p:last-child { margin-bottom: 0; }
+
+.callout-box {
+  background: var(--navy);
+  color: var(--cream);
+  padding: 36px;
+  border-radius: 4px;
+  border-left: 4px solid var(--gold);
+}
+.callout-box .callout-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.callout-box p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--cream2);
+  margin-bottom: 16px;
+}
+.callout-box p:last-child { margin-bottom: 0; }
+.callout-split {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(200,136,58,0.15);
+  border-radius: 3px;
+  padding: 14px 18px;
+  margin-top: 20px;
+}
+.callout-split .pct {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.callout-split .pct-label {
+  font-size: 0.9rem;
+  color: var(--cream2);
+  line-height: 1.4;
+}
+
+/* ── HOW IT WORKS ─────────────────────────────────── */
+.how-it-works { background: var(--cream); }
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+.step-card {
+  background: var(--white);
+  padding: 32px 28px;
+  border-radius: 4px;
+  border-top: 3px solid var(--gold);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.step-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+.step-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.step-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.step-body { font-size: 0.95rem; color: var(--muted); line-height: 1.65; }
+
+/* ── HOW-TO GUIDE ─────────────────────────────────── */
+.howto-guide { background: var(--navy); color: var(--cream); }
+.howto-guide .section-title { color: var(--cream); }
+.howto-guide .section-label { color: var(--gold); }
+
+.accordion { margin-top: 40px; }
+.accordion-item {
+  border-bottom: 1px solid rgba(200,136,58,0.2);
+  overflow: hidden;
+}
+.accordion-item:first-child { border-top: 1px solid rgba(200,136,58,0.2); }
+
+.accordion-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-align: left;
+  color: var(--cream);
+  gap: 20px;
+}
+.accordion-btn:hover .acc-title { color: var(--gold); }
+.acc-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+  width: 28px;
+}
+.acc-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  flex: 1;
+  transition: color 0.2s;
+}
+.acc-icon {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(200,136,58,0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s, background 0.2s;
+  font-size: 1rem;
+  color: var(--gold);
+}
+.accordion-item.open .acc-icon { transform: rotate(45deg); background: rgba(200,136,58,0.15); }
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.accordion-inner {
+  padding: 4px 0 32px 44px;
+  color: var(--cream2);
+  font-size: 0.97rem;
+  line-height: 1.75;
+}
+.accordion-inner p { margin-bottom: 14px; }
+.accordion-inner p:last-child { margin-bottom: 0; }
+.accordion-inner ul {
+  list-style: none;
+  margin: 12px 0;
+}
+.accordion-inner ul li {
+  padding: 6px 0 6px 24px;
+  position: relative;
+}
+.accordion-inner ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+}
+.acc-highlight {
+  background: rgba(200,136,58,0.12);
+  border-left: 3px solid var(--gold);
+  padding: 12px 16px;
+  border-radius: 0 3px 3px 0;
+  margin: 16px 0;
+  font-size: 0.93rem;
+  color: var(--cream);
+}
+
+/* ── HOST AGREEMENT ───────────────────────────────── */
+.host-agreement { background: var(--cream2); }
+.agreement-intro { margin-bottom: 40px; max-width: 680px; }
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.rule-card {
+  background: var(--white);
+  border-radius: 4px;
+  padding: 28px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.rule-card.must { border-left: 3px solid var(--gold); }
+.rule-card.must-not { border-left: 3px solid var(--error); }
+.rule-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.rule-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.rule-card.must-not .rule-title { color: var(--error); }
+.rule-body { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+.fraud-warning {
+  background: var(--navy);
+  color: var(--cream);
+  padding: 36px 40px;
+  border-radius: 4px;
+  border-left: 5px solid var(--error);
+  margin-bottom: 40px;
+}
+.fraud-warning-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #e74c3c;
+  margin-bottom: 12px;
+}
+.fraud-warning p {
+  font-size: 0.97rem;
+  color: var(--cream2);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.fraud-warning p:last-child { margin-bottom: 0; }
+
+/* ── REGISTRATION FORM ────────────────────────────── */
+.register { background: var(--white); }
+.form-intro { max-width: 600px; margin-bottom: 48px; }
+
+.form-card {
+  background: var(--white);
+  border: 1px solid var(--cream2);
+  border-radius: 6px;
+  padding: 56px 60px;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.07);
+  max-width: 800px;
+}
+
+.form-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 36px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--cream2);
+}
+.form-section-title:first-child { margin-top: 0; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+.form-group.full { grid-column: 1 / -1; }
+
+label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+label .req { color: var(--gold); margin-left: 3px; }
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+select,
+textarea {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--cream);
+  border: 1.5px solid #d9d0c5;
+  border-radius: 3px;
+  padding: 12px 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  width: 100%;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(200,136,58,0.12);
+}
+select { cursor: pointer; }
+textarea { resize: vertical; min-height: 100px; }
+
+.platform-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 0;
+}
+.platform-opt {
+  display: none;
+}
+.platform-opt + label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cream);
+  border: 1.5px solid #d9d0c5;
+  border-radius: 3px;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  transition: all 0.2s;
+  color: var(--muted);
+  margin-bottom: 0;
+  text-transform: none;
+}
+.platform-opt + label::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border: 2px solid #c5bbb0;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.platform-opt:checked + label {
+  border-color: var(--gold);
+  background: rgba(200,136,58,0.07);
+  color: var(--navy);
+}
+.platform-opt:checked + label::before {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: inset 0 0 0 3px var(--cream);
+}
+
+.agreement-box {
+  background: var(--cream2);
+  border: 1px solid #d9d0c5;
+  border-radius: 4px;
+  padding: 28px;
+  max-height: 240px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.agreement-box h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--navy);
+  font-size: 1rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.agreement-box p { margin-bottom: 10px; }
+.agreement-box ol { padding-left: 20px; }
+.agreement-box ol li { margin-bottom: 8px; }
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.checkbox-group label {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.6;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.checkbox-group label a { color: var(--gold); }
+
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--navy);
+  color: var(--cream);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 18px 48px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 16px;
+  font-weight: 500;
+}
+.submit-btn:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
+.submit-btn svg { width: 16px; height: 16px; }
+
+.form-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 16px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.03em;
+}
+
+/* Success message */
+.success-msg {
+  display: none;
+  background: var(--navy);
+  color: var(--cream);
+  padding: 48px;
+  border-radius: 6px;
+  text-align: center;
+  border-top: 4px solid var(--gold);
+}
+.success-msg h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.success-msg p { color: var(--cream2); line-height: 1.7; margin-bottom: 12px; }
+
+/* ── FAQ ──────────────────────────────────────────── */
+.faq { background: var(--cream); }
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 48px;
+}
+.faq-item {
+  background: var(--white);
+  padding: 28px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.faq-q {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.faq-a { font-size: 0.95rem; color: var(--muted); line-height: 1.65; }
+
+/* ── FOOTER ───────────────────────────────────────── */
+footer {
+  background: var(--navy);
+  color: var(--cream2);
+  padding: 56px 40px;
+  text-align: center;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.footer-tagline {
+  font-style: italic;
+  color: rgba(250,246,240,0.5);
+  margin-bottom: 28px;
+  font-size: 0.95rem;
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: var(--cream2);
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.footer-links a:hover { opacity: 1; color: var(--gold); }
+.footer-cra {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  opacity: 0.4;
+  letter-spacing: 0.1em;
+  margin-top: 16px;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  section { padding: 64px 24px; }
+  .what-grid { grid-template-columns: 1fr; gap: 40px; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .rules-grid { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .platform-options { grid-template-columns: 1fr; }
+  .form-card { padding: 36px 28px; }
+  .hero-stats { gap: 32px; flex-wrap: wrap; }
+  .accordion-inner { padding-left: 0; }
+}
+
+/* ── ANIMATIONS ───────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero > * { animation: fadeUp 0.7s ease both; }
+.hero-badge { animation-delay: 0.1s; }
+.hero h1 { animation-delay: 0.25s; }
+.hero-sub { animation-delay: 0.35s; }
+.hero-desc { animation-delay: 0.45s; }
+.hero-cta { animation-delay: 0.55s; }
+.hero-stats { animation-delay: 0.7s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="https://theclarityofcharity.github.io">
+    The Clarity of Charity <span>/ Auction Host Program</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#guide">Host Guide</a></li>
+    <li><a href="#agreement">Agreement</a></li>
+    <li><a href="#register">Register</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="hero-badge">Volunteer Auction Host Program</div>
+    <h1>Sell Something.<br><em>Save Someone.</em></h1>
+    <p class="hero-sub">The Return to Innocence Project</p>
+    <p class="hero-desc">
+      Run a charity auction under The Clarity of Charity's mission.
+      Keep 50% of every sale. Donate 50% to building safe homes for
+      displaced trafficking victims ages 0–7. No experience required.
+    </p>
+    <a href="#register" class="hero-cta">Apply to Become a Host →</a>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">50%</div>
+        <div class="stat-label">You Keep</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50%</div>
+        <div class="stat-label">Builds Safe Homes</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0–7</div>
+        <div class="stat-label">Ages We Serve</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0%</div>
+        <div class="stat-label">Platform Fees (Zeffy)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS THIS -->
+<section class="what-is" id="about">
+<div class="container">
+  <div class="section-label">The Program</div>
+  <h2 class="section-title">What Is a <em>Charity Auction Host?</em></h2>
+  <div class="divider"></div>
+
+  <div class="what-grid">
+    <div class="what-text">
+      <p>A Charity Auction Host is a volunteer who runs their own online auction community — on Facebook, Marketplace, or any platform they choose — and donates 50% of every sale's proceeds to The Clarity of Charity.</p>
+      <p>You are not an employee. You are not a paid representative. You are a community member who has chosen to use their own network, their own items, and their own energy to fund safe homes for the most vulnerable children alive.</p>
+      <p>You sell what you already own — or what your community donates to your auction. You keep half. The other half goes directly through our official donation channels to the children.</p>
+      <p>Every approved host is listed publicly on our website. Every host submits a monthly donation summary. Every donation is made through our verified PayPal or Zeffy link — never to a personal account.</p>
+    </div>
+
+    <div>
+      <div class="callout-box">
+        <div class="callout-title">The 50/50 Model</div>
+        <p>Sell anything. Clothes, furniture, collectibles, art, handmade goods, electronics. Your auction. Your items. Your community.</p>
+        <p>When a sale closes, you keep your half and donate the other half directly through our official channels. Simple, transparent, and verified.</p>
+        <div class="callout-split">
+          <div class="pct">50%</div>
+          <div class="pct-label">Goes to you — your time, your items, your effort</div>
+        </div>
+        <div class="callout-split" style="margin-top:10px">
+          <div class="pct" style="color:#7fc8a9">50%</div>
+          <div class="pct-label">Goes directly to building safe homes for displaced 0–7 victims</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how-it-works">
+<div class="container-wide">
+  <div class="section-label">The Process</div>
+  <h2 class="section-title">How It <em>Works</em></h2>
+  <div class="divider"></div>
+
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">Step 01</div>
+      <div class="step-title">Apply & Get Approved</div>
+      <div class="step-body">Complete the registration form below. Jennifer reviews every application personally. Approval typically takes 2–3 business days. You'll receive a welcome kit with everything you need to get started.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">Step 02</div>
+      <div class="step-title">Set Up Your Auction</div>
+      <div class="step-body">Create your Facebook Group, Marketplace listing, or chosen platform. Use the approved branding language and description from your welcome kit. Link back to our official website so buyers can verify your legitimacy.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">Step 03</div>
+      <div class="step-title">Post &amp; Sell</div>
+      <div class="step-body">List your items with descriptions, photos, and starting bids. Collect payment from buyers however works for your platform. Run your auction your way — we just ask that you follow the Host Agreement.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">Step 04</div>
+      <div class="step-title">Donate Your 50%</div>
+      <div class="step-body">After each sale (or at the end of each week), send your 50% donation directly through our official PayPal link or Zeffy page. Never send funds to a personal account — always use our verified channels.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">Step 05</div>
+      <div class="step-title">Submit Monthly Report</div>
+      <div class="step-body">Email a simple monthly summary to theclarityofcharity.volunteer@gmail.com — total sales, total donated, items sold. This keeps your host status active and lets us publicly acknowledge your impact.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">Step 06</div>
+      <div class="step-title">Get Recognized</div>
+      <div class="step-body">Active hosts are listed on our website, featured in our social media, and acknowledged in our monthly donor reports. Your auction community becomes a visible, named part of The Return to Innocence Project.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- HOW-TO GUIDE -->
+<section class="howto-guide" id="guide">
+<div class="container">
+  <div class="section-label">Complete Guide</div>
+  <h2 class="section-title" style="color:var(--cream)">Your Step-by-Step <em>Host Guide</em></h2>
+  <div class="divider"></div>
+
+  <div class="accordion">
+
+    <div class="accordion-item">
+      <button class="accordion-btn" onclick="toggleAcc(this)">
+        <span class="acc-num">01</span>
+        <span class="acc-title">Setting Up Your Auction Group (Facebook)</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <p>Facebook Groups are the easiest and most effective platform for charity auctions. Here's how to set yours up correctly from day one.</p>
+          <ul>
+            <li>Go to Facebook → Groups → Create New Group</li>
+            <li>Name your group clearly — suggested format: <strong>"[Your Name]'s Auction — Supporting The Clarity of Charity"</strong></li>
+            <li>Set the group to <strong>Public</strong> so buyers can find it and verify its legitimacy</li>
+            <li>In the About section, paste the approved description from your welcome kit — include our official website link</li>
+            <li>Pin a post at the top explaining the 50/50 model and linking to our official donation page</li>
+            <li>Add the Clarity of Charity website to your group's featured links</li>
+          </ul>
+          <div class="acc-highlight">⚠️ Do not use "Official" or "Authorized Representative" in your group name. You are a Volunteer Host. Use exactly that language.</div>
+          <p>Once your group is live, email the link to theclarityofcharity.volunteer@gmail.com and we'll add it to our official host directory.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-btn" onclick="toggleAcc(this)">
+        <span class="acc-num">02</span>
+        <span class="acc-title">How to Post Items &amp; Run Bids</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <p>Great auction posts get more bids and more money for the children. Follow this formula:</p>
+          <ul>
+            <li><strong>Photos first</strong> — minimum 3 clear photos, good lighting, no clutter in background</li>
+            <li><strong>Starting bid</strong> — set at roughly 30–40% of item's value to attract early bidders</li>
+            <li><strong>Description</strong> — item condition, dimensions if relevant, any flaws disclosed honestly</li>
+            <li><strong>Bid increment</strong> — specify (e.g. "minimum $2 bid increments")</li>
+            <li><strong>Closing time</strong> — always set a specific end time ("Auction closes Sunday 8PM Mountain Time")</li>
+            <li><strong>Shipping or pickup</strong> — be clear about whether you ship, cost, or pickup only</li>
+          </ul>
+          <p>Always include this line at the bottom of every listing:</p>
+          <div class="acc-highlight">
+            "50% of this sale goes directly to The Clarity of Charity (CRA #748511078) — building safe homes for displaced trafficking victims ages 0–7. Donate directly at: https://www.paypal.com/donate?hosted_button_id=8C7PBBDL42XKL"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-btn" onclick="toggleAcc(this)">
+        <span class="acc-num">03</span>
+        <span class="acc-title">Collecting Payment from Buyers</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <p>How you collect from buyers is up to you — it's your auction and your money. Common options:</p>
+          <ul>
+            <li>E-transfer (Interac) to your personal account</li>
+            <li>PayPal Friends &amp; Family (no fees)</li>
+            <li>Cash on pickup</li>
+            <li>Facebook Pay / Marketplace payment</li>
+          </ul>
+          <div class="acc-highlight">⚠️ IMPORTANT: Buyers pay YOU, not The Clarity of Charity. You then donate your 50% through our official channels. Never ask buyers to send funds directly to TCC — this creates confusion and cannot be verified.</div>
+          <p>After collecting from the buyer, send your 50% to TCC via our official PayPal link or Zeffy page within 7 days of the sale closing. Keep a simple record of each transaction for your monthly report.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-btn" onclick="toggleAcc(this)">
+        <span class="acc-num">04</span>
+        <span class="acc-title">Making Your Official Donation</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <p>This step is critical. All donations must go through verified, official channels. There are two approved methods:</p>
+          <ul>
+            <li><strong>PayPal:</strong> https://www.paypal.com/donate?hosted_button_id=8C7PBBDL42XKL</li>
+            <li><strong>Zeffy:</strong> Use the link provided in your welcome kit (0% platform fees)</li>
+          </ul>
+          <p>When making your donation, add a note: <strong>"Auction Host Donation — [Your Name] — [Month]"</strong>. This lets us match your donation to your monthly report and acknowledge it correctly.</p>
+          <div class="acc-highlight">Never send funds via e-transfer to any personal email address claiming to be The Clarity of Charity. Our only official email is theclarityofcharity.volunteer@gmail.com and we do not accept e-transfers directly.</div>
+          <p>You will receive an automatic PayPal or Zeffy receipt. Save these for your records. If you need a CRA donation receipt, contact us — we can issue one for verified cumulative donations.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-btn" onclick="toggleAcc(this)">
+        <span class="acc-num">05</span>
+        <span class="acc-title">Sourcing Items to Sell</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <p>The most sustainable auction hosts have multiple item sources. Ideas:</p>
+          <ul>
+            <li><strong>Your own declutter</strong> — clothes, home goods, books, electronics, décor</li>
+            <li><strong>Friends and family donations</strong> — ask your network to donate items to your auction</li>
+            <li><strong>Local business donations</strong> — approach local shops, restaurants, and services for gift cards or products</li>
+            <li><strong>Handmade items</strong> — crafts, baked goods (local pickup), artwork, knitted items</li>
+            <li><strong>Thrift store finds</strong> — buy low, list higher, donate the 50% from the profit</li>
+          </ul>
+          <div class="acc-highlight">If a business donates an item specifically for your charity auction, make sure they know the 50/50 model — 50% of the sale goes to TCC, 50% covers your sourcing costs or goes back to them as credit if agreed.</div>
+          <p>You may not accept cash donations "for the auction" from buyers or the public and then redirect them. Cash donations must go through our official PayPal or Zeffy channels directly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-btn" onclick="toggleAcc(this)">
+        <span class="acc-num">06</span>
+        <span class="acc-title">Your Monthly Report</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <p>On the last day of each month, email a brief summary to theclarityofcharity.volunteer@gmail.com. Subject line: <strong>"[Your Name] — Auction Report — [Month Year]"</strong></p>
+          <p>Include:</p>
+          <ul>
+            <li>Total sales this month (CAD)</li>
+            <li>Total donated to TCC (50% of above)</li>
+            <li>Number of items sold</li>
+            <li>PayPal/Zeffy confirmation number(s) for your donation(s)</li>
+            <li>Any items you'd like us to feature or shoutout on our social media</li>
+          </ul>
+          <div class="acc-highlight">Hosts who do not submit monthly reports for two consecutive months will have their host status reviewed. We need accountability on both ends — it protects you, the donors, and the children.</div>
+          <p>We'll reply with a public acknowledgment and add your monthly total to our community fundraising tracker. Your auction community will see the real impact of what they helped build.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-btn" onclick="toggleAcc(this)">
+        <span class="acc-num">07</span>
+        <span class="acc-title">Growing Your Auction Community</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <p>The best auction hosts build a loyal buyer community that comes back every week. Here's how:</p>
+          <ul>
+            <li><strong>Post consistently</strong> — even 2–3 items a week builds momentum and keeps your group active</li>
+            <li><strong>Share the mission</strong> — regularly post updates from The Clarity of Charity so buyers feel connected to the cause</li>
+            <li><strong>Acknowledge buyers publicly</strong> — thank them by name when they win an auction</li>
+            <li><strong>Run themed auctions</strong> — seasonal themes, holiday specials, "mystery box" auctions drive engagement</li>
+            <li><strong>Invite your buyer community to recruit others</strong> — every buyer who shares your group is a volunteer recruiter</li>
+            <li><strong>Share your monthly donation total</strong> — tell your community how much they raised collectively. Make them proud.</li>
+          </ul>
+          <p>Tag @ClarityOfCharity in posts about your auction and we will share your content on our official pages — giving your group free exposure to our growing audience.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- HOST AGREEMENT -->
+<section class="host-agreement" id="agreement">
+<div class="container">
+  <div class="section-label">Before You Apply</div>
+  <h2 class="section-title">The Host <em>Agreement</em></h2>
+  <div class="divider"></div>
+
+  <div class="agreement-intro">
+    <p>We welcome every host with open arms. We also take our CRA registration, our donors' trust, and the children's safety seriously. Every host must understand and agree to these rules before applying. This is how we protect the mission — and how we protect you.</p>
+  </div>
+
+  <div class="fraud-warning">
+    <div class="fraud-warning-title">⚠️ Fraud Prevention — Zero Tolerance</div>
+    <p>The Clarity of Charity is a CRA-registered nonprofit. Any misuse of our name, number, or mission for personal financial gain is fraud under Canadian law — and we will report it without hesitation.</p>
+    <p>All donations must flow through our official PayPal or Zeffy channels. Never through personal accounts, wire transfers, gift cards, or any method not listed in this agreement. Any host found soliciting money in TCC's name outside of these channels will be immediately reported to the CRA and relevant authorities.</p>
+  </div>
+
+  <div class="rules-grid">
+    <div class="rule-card must">
+      <div class="rule-icon">✓</div>
+      <div>
+        <div class="rule-title">Send all donations through official channels only</div>
+        <div class="rule-body">PayPal (paypal.com/donate?hosted_button_id=8C7PBBDL42XKL) or Zeffy (link in welcome kit). No exceptions.</div>
+      </div>
+    </div>
+    <div class="rule-card must-not">
+      <div class="rule-icon">✗</div>
+      <div>
+        <div class="rule-title">Never collect donations to a personal account</div>
+        <div class="rule-body">Do not ask buyers or the public to send money "to TCC" via your personal PayPal, e-transfer, Venmo, or any personal account.</div>
+      </div>
+    </div>
+    <div class="rule-card must">
+      <div class="rule-icon">✓</div>
+      <div>
+        <div class="rule-title">Identify yourself as a Volunteer Host</div>
+        <div class="rule-body">You are a community volunteer. Not an employee, not an official representative, not a paid staff member. Use this language exactly.</div>
+      </div>
+    </div>
+    <div class="rule-card must-not">
+      <div class="rule-icon">✗</div>
+      <div>
+        <div class="rule-title">Never create unofficial TCC branding</div>
+        <div class="rule-body">Do not create logos, letterhead, official-looking certificates, or materials that imply you are acting on behalf of TCC officially. Use only approved materials from your welcome kit.</div>
+      </div>
+    </div>
+    <div class="rule-card must">
+      <div class="rule-icon">✓</div>
+      <div>
+        <div class="rule-title">Submit monthly reports</div>
+        <div class="rule-body">A simple monthly email with your sales total, donation amount, and PayPal/Zeffy confirmation numbers. Required to maintain active host status.</div>
+      </div>
+    </div>
+    <div class="rule-card must-not">
+      <div class="rule-icon">✗</div>
+      <div>
+        <div class="rule-title">Never sell items donated specifically for TCC and keep all proceeds</div>
+        <div class="rule-body">If items are donated to your auction explicitly for the charity, the 50/50 split applies. Keeping all proceeds from donated items is fraud.</div>
+      </div>
+    </div>
+    <div class="rule-card must">
+      <div class="rule-icon">✓</div>
+      <div>
+        <div class="rule-title">Link to our official website in every listing</div>
+        <div class="rule-body">Every auction post and group description must include our official website so buyers can independently verify your host status.</div>
+      </div>
+    </div>
+    <div class="rule-card must-not">
+      <div class="rule-icon">✗</div>
+      <div>
+        <div class="rule-title">Never operate if your application was not approved</div>
+        <div class="rule-body">Running an auction in TCC's name before receiving written approval is unauthorized and will be treated as fraudulent misrepresentation.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- REGISTER -->
+<section class="register" id="register">
+<div class="container">
+  <div class="section-label">Apply Now</div>
+  <h2 class="section-title">Host <em>Registration</em></h2>
+  <div class="divider"></div>
+
+  <div class="form-intro">
+    <p>Applications are reviewed personally by Jennifer Coburn. You'll receive a response within 2–3 business days. Approved hosts receive a welcome kit with branding guidelines, approved listing language, official links, and everything you need to launch.</p>
+  </div>
+
+  <div class="form-card" id="regForm">
+    <!-- PERSONAL INFO -->
+    <div class="form-section-title">Your Information</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fname">First Name <span class="req">*</span></label>
+        <input type="text" id="fname" placeholder="First name" required>
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name <span class="req">*</span></label>
+        <input type="text" id="lname" placeholder="Last name" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="email">Email Address <span class="req">*</span></label>
+        <input type="email" id="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone (Optional)</label>
+        <input type="text" id="phone" placeholder="(780) 000-0000">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="city">City <span class="req">*</span></label>
+        <input type="text" id="city" placeholder="Your city" required>
+      </div>
+      <div class="form-group">
+        <label for="province">Province / Territory <span class="req">*</span></label>
+        <select id="province" required>
+          <option value="">— Select —</option>
+          <option>Alberta</option>
+          <option>British Columbia</option>
+          <option>Manitoba</option>
+          <option>New Brunswick</option>
+          <option>Newfoundland and Labrador</option>
+          <option>Northwest Territories</option>
+          <option>Nova Scotia</option>
+          <option>Nunavut</option>
+          <option>Ontario</option>
+          <option>Prince Edward Island</option>
+          <option>Quebec</option>
+          <option>Saskatchewan</option>
+          <option>Yukon</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- AUCTION PLATFORM -->
+    <div class="form-section-title">Your Auction Platform</div>
+    <div class="form-group">
+      <label>Primary Platform <span class="req">*</span></label>
+      <div class="platform-options">
+        <input type="radio" class="platform-opt" name="platform" id="p-fb" value="Facebook Group">
+        <label for="p-fb">Facebook Group</label>
+
+        <input type="radio" class="platform-opt" name="platform" id="p-mktplace" value="Facebook Marketplace">
+        <label for="p-mktplace">Facebook Marketplace</label>
+
+        <input type="radio" class="platform-opt" name="platform" id="p-ebay" value="eBay">
+        <label for="p-ebay">eBay</label>
+
+        <input type="radio" class="platform-opt" name="platform" id="p-inperson" value="In-Person Events">
+        <label for="p-inperson">In-Person Events</label>
+
+        <input type="radio" class="platform-opt" name="platform" id="p-multi" value="Multiple Platforms">
+        <label for="p-multi">Multiple Platforms</label>
+
+        <input type="radio" class="platform-opt" name="platform" id="p-other" value="Other">
+        <label for="p-other">Other</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="grouplink">Existing Group / Page / Profile Link (if already set up)</label>
+      <input type="url" id="grouplink" placeholder="https://facebook.com/groups/...">
+    </div>
+
+    <!-- ABOUT YOUR AUCTION -->
+    <div class="form-section-title">About Your Auction</div>
+    <div class="form-group">
+      <label for="itemtypes">What do you plan to sell? <span class="req">*</span></label>
+      <textarea id="itemtypes" rows="3" placeholder="E.g. clothing, household goods, handmade crafts, vintage items, electronics..." required></textarea>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="frequency">How often do you plan to post?</label>
+        <select id="frequency">
+          <option value="">— Select —</option>
+          <option>Daily</option>
+          <option>2–3 times per week</option>
+          <option>Weekly</option>
+          <option>As items become available</option>
+          <option>Seasonal / event-based</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="estimate">Estimated monthly donation (CAD)</label>
+        <select id="estimate">
+          <option value="">— Select —</option>
+          <option>Under $50</option>
+          <option>$50 – $100</option>
+          <option>$100 – $250</option>
+          <option>$250 – $500</option>
+          <option>$500+</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="motivation">Why do you want to host? (Optional — but we love knowing)</label>
+      <textarea id="motivation" rows="3" placeholder="What drew you to The Clarity of Charity's mission?"></textarea>
+    </div>
+
+    <!-- HOST AGREEMENT -->
+    <div class="form-section-title">Host Agreement</div>
+    <p style="font-size:0.93rem;color:var(--muted);margin-bottom:20px;">Read the agreement carefully. You must agree to all terms before your application will be considered.</p>
+
+    <div class="agreement-box">
+      <h4>Volunteer Auction Host Agreement — The Clarity of Charity</h4>
+      <p>By submitting this application, I understand and agree to the following:</p>
+      <ol>
+        <li><strong>I am a volunteer.</strong> I am not an employee, paid contractor, or official representative of The Clarity of Charity. I will not represent myself as such in any communication, listing, or public material.</li>
+        <li><strong>All donations must go through official channels.</strong> I will send 50% of my auction proceeds exclusively through The Clarity of Charity's official PayPal link (paypal.com/donate?hosted_button_id=8C7PBBDL42XKL) or approved Zeffy page. I will never direct buyers or the public to send funds to any personal account on behalf of TCC.</li>
+        <li><strong>I will not solicit cash donations.</strong> I will not ask buyers, group members, or the public to donate cash, gift cards, e-transfers, or cryptocurrency directly to me "for The Clarity of Charity." All charitable contributions must go through TCC's verified channels.</li>
+        <li><strong>I will not create unauthorized branding.</strong> I will not create logos, official-looking certificates, letterhead, or any materials that imply official affiliation with TCC beyond "Volunteer Auction Host." I will use only materials provided in my approved welcome kit.</li>
+        <li><strong>I will submit monthly reports.</strong> I will email a donation summary including PayPal/Zeffy confirmation numbers to theclarityofcharity.volunteer@gmail.com by the last day of each month. Failure to submit reports for two consecutive months may result in revocation of host status.</li>
+        <li><strong>I will link to TCC's official website in all listings.</strong> Every auction post and group description will include a link to theclarityofcharity.github.io so buyers can independently verify my host status.</li>
+        <li><strong>I will not operate before receiving written approval.</strong> Running an auction in The Clarity of Charity's name without written approval from Jennifer Coburn constitutes unauthorized use of the organization's identity and may be reported to the CRA and relevant authorities.</li>
+        <li><strong>I understand this authorization may be revoked.</strong> The Clarity of Charity reserves the right to revoke my host status at any time, without notice, if any term of this agreement is violated or if the organization determines that continued authorization is not in the mission's best interest.</li>
+        <li><strong>I will report suspected fraud.</strong> If I become aware of anyone operating an auction in TCC's name without authorization, or soliciting funds fraudulently, I will report it immediately to theclarityofcharity.volunteer@gmail.com.</li>
+        <li><strong>Fraudulent activity will be reported.</strong> Any misuse of The Clarity of Charity's name, CRA registration number, or mission for personal financial gain is fraud under Canadian law. TCC will report any such activity to the Canada Revenue Agency and relevant law enforcement without exception.</li>
+      </ol>
+    </div>
+
+    <div class="checkbox-group">
+      <input type="checkbox" id="agree1" required>
+      <label for="agree1">I have read and fully agree to the Volunteer Auction Host Agreement above. I understand my responsibilities, the fraud prevention rules, and the consequences of violating this agreement. <span class="req">*</span></label>
+    </div>
+    <div class="checkbox-group">
+      <input type="checkbox" id="agree2" required>
+      <label for="agree2">I confirm that I am applying as an individual volunteer, not on behalf of any organization, and that all information I have provided is accurate and truthful. <span class="req">*</span></label>
+    </div>
+
+    <div class="form-group" style="margin-top:8px">
+      <label for="signature">Your Full Name as Signature <span class="req">*</span></label>
+      <input type="text" id="signature" placeholder="Type your full legal name" required>
+    </div>
+
+    <button class="submit-btn" onclick="submitForm()">
+      Submit My Application
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+    <p class="form-note">Applications reviewed personally by Jennifer Coburn within 2–3 business days. You'll receive a confirmation email when your application is received.</p>
+  </div>
+
+  <!-- Success state -->
+  <div class="success-msg" id="successMsg">
+    <h3>💛 Application Received</h3>
+    <p>Thank you for applying to become a Return to Innocence Auction Host.</p>
+    <p>Jennifer will review your application personally and be in touch within 2–3 business days at the email address you provided.</p>
+    <p style="margin-top:24px;font-family:'DM Mono',monospace;font-size:0.8rem;opacity:0.6;">theclarityofcharity.volunteer@gmail.com | CRA #748511078</p>
+  </div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+<div class="container">
+  <div class="section-label">Common Questions</div>
+  <h2 class="section-title">Before You <em>Apply</em></h2>
+  <div class="divider"></div>
+
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-q">Do I need any experience running auctions?</div>
+      <div class="faq-a">No. Your welcome kit includes everything you need to start — approved language, a step-by-step setup guide, and posting templates. If you can post on Facebook, you can host an auction.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I recruit others to sell in my auction group?</div>
+      <div class="faq-a">Yes — that's encouraged. You can invite others to post in your group, as long as you make clear to every seller that 50% of their proceeds are expected as a donation, and that you are responsible for collecting and remitting that amount.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will I get a tax receipt for my donations?</div>
+      <div class="faq-a">Donations made through our official PayPal or Zeffy channels generate a receipt automatically. CRA-compliant donation receipts for larger cumulative amounts can be issued on request. Contact us with your annual totals.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens if a buyer asks for a refund?</div>
+      <div class="faq-a">Refunds are between you and the buyer — your auction, your responsibility. We recommend a clear "as-is" or "all sales final" policy in your group rules. Include a note about this in your welcome post.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I run more than one auction group?</div>
+      <div class="faq-a">Yes, with a separate approval for each group. Each group must be listed in our host directory and follow all the same rules. You'll submit one combined monthly report covering all your groups.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I suspect someone is running a fraudulent auction in TCC's name?</div>
+      <div class="faq-a">Report it immediately to theclarityofcharity.volunteer@gmail.com with as much detail as possible — group name, link, screenshots. We take this seriously and will act quickly.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">The Clarity of Charity</div>
+  <div class="footer-tagline">The Return to Innocence Project — Building safe homes for displaced victims ages 0–7</div>
+  <div class="footer-links">
+    <a href="https://theclarityofcharity.github.io">Website</a>
+    <a href="https://www.paypal.com/donate?hosted_button_id=8C7PBBDL42XKL">Donate via PayPal</a>
+    <a href="https://afundraisingmerchshop.com">Merch Store</a>
+    <a href="mailto:theclarityofcharity.volunteer@gmail.com">Contact Jennifer</a>
+  </div>
+  <div class="footer-cra">CRA Registered Nonprofit #748511078 — Edmonton, Alberta, Canada</div>
+  <div class="footer-cra" style="margin-top:8px">Canadian Human Trafficking Hotline: 1-833-900-1010</div>
+</footer>
+
+<script>
+// Accordion
+function toggleAcc(btn) {
+  const item = btn.closest('.accordion-item');
+  const body = item.querySelector('.accordion-body');
+  const isOpen = item.classList.contains('open');
+
+  document.querySelectorAll('.accordion-item.open').forEach(el => {
+    el.classList.remove('open');
+    el.querySelector('.accordion-body').style.maxHeight = '0';
+  });
+
+  if (!isOpen) {
+    item.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+}
+
+// Form submission
+function submitForm() {
+  const required = [
+    { id: 'fname', label: 'First Name' },
+    { id: 'lname', label: 'Last Name' },
+    { id: 'email', label: 'Email' },
+    { id: 'city', label: 'City' },
+    { id: 'province', label: 'Province' },
+    { id: 'itemtypes', label: 'Items to sell' },
+    { id: 'signature', label: 'Signature' },
+  ];
+
+  for (const field of required) {
+    const el = document.getElementById(field.id);
+    if (!el.value.trim()) {
+      el.focus();
+      el.style.borderColor = 'var(--error)';
+      el.addEventListener('input', () => el.style.borderColor = '', { once: true });
+      alert(`Please fill in: ${field.label}`);
+      return;
+    }
+  }
+
+  const platform = document.querySelector('input[name="platform"]:checked');
+  if (!platform) { alert('Please select your auction platform.'); return; }
+
+  const agree1 = document.getElementById('agree1');
+  const agree2 = document.getElementById('agree2');
+  if (!agree1.checked || !agree2.checked) {
+    alert('Please read and agree to both agreement checkboxes before submitting.');
+    return;
+  }
+
+  // Build mailto
+  const fname = document.getElementById('fname').value;
+  const lname = document.getElementById('lname').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value || 'Not provided';
+  const city = document.getElementById('city').value;
+  const province = document.getElementById('province').value;
+  const grouplink = document.getElementById('grouplink').value || 'Not yet set up';
+  const items = document.getElementById('itemtypes').value;
+  const freq = document.getElementById('frequency').value || 'Not specified';
+  const est = document.getElementById('estimate').value || 'Not specified';
+  const motivation = document.getElementById('motivation').value || 'Not provided';
+  const sig = document.getElementById('signature').value;
+
+  const body = `NEW AUCTION HOST APPLICATION
+==========================
+
+APPLICANT
+Name: ${fname} ${lname}
+Email: ${email}
+Phone: ${phone}
+Location: ${city}, ${province}
+
+AUCTION DETAILS
+Platform: ${platform.value}
+Group/Page Link: ${grouplink}
+Items to Sell: ${items}
+Posting Frequency: ${freq}
+Estimated Monthly Donation: ${est}
+Motivation: ${motivation}
+
+AGREEMENT
+Applicant signed as: ${sig}
+Agreement 1 (Host Agreement): AGREED
+Agreement 2 (Accuracy confirmation): AGREED
+
+--
+Submitted via The Clarity of Charity Auction Host Registration Page`;
+
+  const mailtoLink = `mailto:theclarityofcharity.volunteer@gmail.com?subject=Auction Host Application — ${fname} ${lname}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailtoLink;
+
+  setTimeout(() => {
+    document.getElementById('regForm').style.display = 'none';
+    const msg = document.getElementById('successMsg');
+    msg.style.display = 'block';
+    msg.scrollIntoView({ behavior: 'smooth' });
+  }, 800);
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.style.opacity = '1';
+      el.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.step-card, .rule-card, .faq-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
