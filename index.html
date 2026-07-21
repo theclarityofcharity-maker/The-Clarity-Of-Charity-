@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Clarity of Charity — Build The First Sanctuary</title>
+<meta name="description" content="Jennifer Coburn is building North America's first trauma-informed safe homes for displaced child survivors of trafficking, ages 0–7. The Return to Innocence Project.">
+<meta property="og:title" content="Help Build The First Sanctuary — The Clarity of Charity">
+<meta property="og:description" content="North America's first trauma-informed safe homes for child survivors of trafficking ages 0–7. The site has been found. The children are waiting.">
+<meta name="theme-color" content="#F8F4EE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --nv:#0E1C2F;
+  --gd:#C8953A;
+  --gd2:#E0A840;
+  --cr:#F8F4EE;
+  --cr2:#F0EAE0;
+  --wh:#FFFFFF;
+  --sage:#4A7C59;
+  --sage2:#5C9A6E;
+  --warm:#8B4513;
+  --rd:#8B1A1A;
+  --mid:#2D2D2D;
+  --mu:#5A5A5A;
+  --lt:#8A8A8A;
+  --bd:#E0D8CC;
+  --sh:0 2px 20px rgba(0,0,0,.06);
+  --sh2:0 8px 40px rgba(0,0,0,.1);
+  --r:8px;--r2:16px;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Source Sans 3',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--mid);background:var(--wh);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* UTILITIES */
+.wrap{max-width:1100px;margin:0 auto;padding:0 2rem}
+.wrap-sm{max-width:720px;margin:0 auto;padding:0 2rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-size:.95rem;font-weight:600;padding:.9rem 2.2rem;border-radius:50px;transition:all .25s;cursor:pointer;border:2px solid transparent;white-space:nowrap;letter-spacing:.01em}
+.btn-gd{background:var(--gd);color:var(--wh)}
+.btn-gd:hover{background:var(--gd2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,149,58,.3)}
+.btn-nv{background:var(--nv);color:var(--wh)}
+.btn-nv:hover{background:#162436;transform:translateY(-2px)}
+.btn-out{border-color:var(--nv);color:var(--nv);background:transparent}
+.btn-out:hover{background:var(--nv);color:var(--wh)}
+.btn-out-wh{border-color:rgba(255,255,255,.6);color:var(--wh);background:transparent}
+.btn-out-wh:hover{background:rgba(255,255,255,.12)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.vis{opacity:1;transform:none}
+.rv2{opacity:0;transform:translateY(24px);transition:opacity .7s .15s ease,transform .7s .15s ease}
+.rv2.vis{opacity:1;transform:none}
+.rv3{opacity:0;transform:translateY(24px);transition:opacity .7s .3s ease,transform .7s .3s ease}
+.rv3.vis{opacity:1;transform:none}
+.tag{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .9rem;border-radius:2rem;margin-bottom:1.2rem}
+.tag-gd{background:rgba(200,149,58,.12);color:var(--gd);border:1px solid rgba(200,149,58,.25)}
+.tag-sage{background:rgba(74,124,89,.1);color:var(--sage);border:1px solid rgba(74,124,89,.2)}
+.tag-nv{background:rgba(14,28,47,.08);color:var(--nv);border:1px solid rgba(14,28,47,.15)}
+.tag-rd{background:rgba(139,26,26,.08);color:var(--rd);border:1px solid rgba(139,26,26,.18)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(248,244,238,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd);padding:.9rem 0;transition:all .3s}
+.nav-i{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.nbrand{display:flex;flex-direction:column}
+.nbrand-name{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--nv);line-height:1.2}
+.nbrand-sub{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--lt);margin-top:.15rem}
+.nlinks{display:flex;align-items:center;gap:.2rem}
+.nlinks a{font-size:.85rem;font-weight:500;color:var(--mu);padding:.4rem .75rem;border-radius:50px;transition:all .2s}
+.nlinks a:hover{color:var(--nv);background:var(--cr2)}
+.ndonate{font-size:.82rem;font-weight:700;padding:.55rem 1.4rem;background:var(--gd);color:var(--wh);border-radius:50px;transition:all .2s}
+.ndonate:hover{background:var(--gd2);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:.5rem}
+.hamburger span{width:22px;height:2px;background:var(--nv);display:block;transition:all .3s}
+.mmenu{display:none;position:fixed;inset:0;background:var(--cr);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mmenu.open{display:flex}
+.mmenu a{font-family:var(--serif);font-size:1.8rem;color:var(--nv);font-weight:600}
+.mmenu a:hover{color:var(--gd)}
+.mclose{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:var(--nv);background:none;border:none;cursor:pointer}
+
+/* HERO */
+#hero{min-height:100vh;background:linear-gradient(160deg,var(--cr) 0%,#EDE7DA 40%,#E4D9C8 100%);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding-top:5rem}
+.hero-orb1{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(200,149,58,.12) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none}
+.hero-orb2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(74,124,89,.08) 0%,transparent 70%);bottom:-50px;left:-50px;pointer-events:none}
+.hero-inner{position:relative;z-index:1;padding:5rem 0 4rem}
+.hero-grid{display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center}
+.hero-eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gd);margin-bottom:1.4rem;display:flex;align-items:center;gap:.75rem}
+.hero-eyebrow::before{content:"";width:28px;height:1px;background:var(--gd)}
+h1{font-family:var(--serif);font-size:clamp(2.6rem,4.5vw,4rem);font-weight:700;color:var(--nv);line-height:1.1;margin-bottom:1.4rem}
+h1 em{font-style:italic;color:var(--gd)}
+.hero-lead{font-size:1.05rem;color:var(--mu);line-height:1.8;max-width:500px;margin-bottom:2rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem}
+.hero-proof{display:flex;align-items:center;gap:1.5rem;padding-top:1.5rem;border-top:1px solid var(--bd)}
+.hp-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--mu)}
+.hp-icon{font-size:1rem}
+/* Hero card */
+.hero-card{background:var(--wh);border-radius:var(--r2);box-shadow:var(--sh2);overflow:hidden;border:1px solid var(--bd)}
+.hc-top{background:var(--nv);padding:1.8rem 2rem}
+.hc-top h3{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--wh);margin-bottom:.4rem}
+.hc-top p{font-size:.82rem;color:rgba(255,255,255,.55)}
+.hc-body{padding:1.8rem 2rem}
+.hc-stat{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--bd)}
+.hc-stat:last-of-type{border-bottom:none}
+.hc-stat-l{font-size:.85rem;color:var(--mu)}
+.hc-stat-r{font-family:var(--mono);font-size:.85rem;font-weight:500;color:var(--nv)}
+.hc-goal{margin-top:1.2rem;padding:1.2rem;background:var(--cr);border-radius:var(--r);text-align:center}
+.hc-goal-num{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--nv);display:block;line-height:1}
+.hc-goal-lbl{font-size:.78rem;color:var(--mu);margin-top:.3rem}
+.hc-ctas{display:flex;flex-direction:column;gap:.7rem;margin-top:1.2rem}
+.hc-btn{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.2rem;border-radius:var(--r);font-size:.86rem;font-weight:600;transition:all .2s;border:1.5px solid transparent}
+.hc-btn-gd{background:var(--gd);color:var(--wh)}
+.hc-btn-gd:hover{background:var(--gd2)}
+.hc-btn-out{border-color:var(--bd);color:var(--mid);background:var(--wh)}
+.hc-btn-out:hover{border-color:var(--gd);color:var(--nv)}
+.hero-scroll{text-align:center;padding:2rem 0 1rem;position:relative;z-index:1}
+.scroll-i{display:inline-flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--lt);font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase}
+.scroll-line{width:1px;height:32px;background:linear-gradient(transparent,var(--gd));animation:spl 2s infinite}
+@keyframes spl{0%,100%{opacity:.3}50%{opacity:.8}}
+
+/* CRISIS STRIP */
+#crisis{background:var(--nv);padding:4rem 0}
+.crisis-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.crisis-quote{font-family:var(--serif);font-size:clamp(1.3rem,2vw,1.8rem);font-style:italic;color:var(--wh);line-height:1.55;border-left:3px solid var(--gd);padding-left:1.6rem}
+.crisis-quote cite{display:block;font-style:normal;font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.9rem}
+.crisis-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);border-radius:var(--r2);overflow:hidden}
+.cs{background:rgba(255,255,255,.03);padding:2rem 1.5rem;text-align:center;transition:background .2s}
+.cs:hover{background:rgba(255,255,255,.06)}
+.cs-num{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;color:var(--gd);display:block;line-height:1;margin-bottom:.4rem}
+.cs-desc{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.5}
+.cs-src{font-family:var(--mono);font-size:.58rem;color:rgba(255,255,255,.2);margin-top:.4rem;display:block}
+
+/* THE TRUTH */
+#truth{padding:6rem 0;background:var(--wh)}
+.truth-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.truth-left h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--nv);line-height:1.2;margin-bottom:1.2rem}
+.truth-left h2 em{font-style:italic;color:var(--gd)}
+.truth-callout{background:var(--nv);border-radius:var(--r2);padding:2rem;margin-bottom:1.5rem}
+.truth-callout p{font-family:var(--serif);font-size:1.05rem;font-style:italic;color:rgba(255,255,255,.85);line-height:1.7}
+.truth-body p{font-size:.97rem;color:var(--mu);line-height:1.8;margin-bottom:1rem}
+.gap-cards{display:flex;flex-direction:column;gap:1rem}
+.gap-card{display:flex;gap:1rem;align-items:flex-start;padding:1.2rem 1.4rem;background:var(--cr);border-radius:var(--r);border:1px solid var(--bd);transition:all .2s}
+.gap-card:hover{box-shadow:var(--sh);border-color:rgba(200,149,58,.25)}
+.gap-icon{font-size:1.3rem;flex-shrink:0;margin-top:.1rem}
+.gap-title{font-weight:600;color:var(--nv);font-size:.92rem;margin-bottom:.2rem}
+.gap-text{font-size:.84rem;color:var(--mu);line-height:1.6}
+
+/* THE MISSION */
+#mission{padding:6rem 0;background:var(--cr)}
+.mission-head{text-align:center;margin-bottom:4rem}
+.mission-head h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;color:var(--nv);margin-bottom:.75rem;line-height:1.2}
+.mission-head h2 em{font-style:italic;color:var(--gd)}
+.mission-head p{font-size:1rem;color:var(--mu);max-width:560px;margin:0 auto;line-height:1.75}
+.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.pillar{background:var(--wh);border:1px solid var(--bd);border-radius:var(--r2);overflow:hidden;transition:all .25s}
+.pillar:hover{box-shadow:var(--sh2);transform:translateY(-3px)}
+.pillar-accent{height:4px}
+.pillar-accent.gd{background:var(--gd)}
+.pillar-accent.sage{background:var(--sage)}
+.pillar-accent.nv{background:var(--nv)}
+.pillar-accent.rd{background:var(--rd)}
+.pillar-body{padding:2rem}
+.pillar-num{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--lt);margin-bottom:.6rem}
+.pillar-icon{font-size:1.8rem;margin-bottom:.9rem;display:block}
+.pillar-title{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--nv);margin-bottom:.5rem}
+.pillar-sub{font-size:.8rem;color:var(--mu);font-style:italic;margin-bottom:1rem}
+.pillar-body p{font-size:.87rem;color:var(--mu);line-height:1.7}
+
+/* THE SANCTUARY */
+#sanctuary{padding:6rem 0;background:var(--wh)}
+.sanc-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.sanc-left h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--nv);line-height:1.2;margin-bottom:1rem}
+.sanc-left h2 em{font-style:italic;color:var(--sage)}
+.sanc-left p{font-size:.97rem;color:var(--mu);line-height:1.8;margin-bottom:1.2rem}
+.sanc-truth{background:linear-gradient(135deg,var(--nv),#1a2d45);border-radius:var(--r2);padding:2rem;margin:1.5rem 0}
+.sanc-truth p{font-family:var(--serif);font-size:1rem;font-style:italic;color:rgba(255,255,255,.85);line-height:1.7}
+.sanc-feats{display:flex;flex-direction:column;gap:1rem}
+.sf{background:var(--cr);border:1px solid var(--bd);border-radius:var(--r);padding:1.3rem;display:flex;gap:1rem;align-items:flex-start;transition:all .2s}
+.sf:hover{box-shadow:var(--sh);border-color:rgba(74,124,89,.2)}
+.sf-icon{width:40px;height:40px;background:rgba(74,124,89,.1);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.sf-title{font-weight:600;color:var(--nv);font-size:.9rem;margin-bottom:.2rem}
+.sf-text{font-size:.81rem;color:var(--mu);line-height:1.6}
+
+/* ORPHAN CRISIS */
+#orphan{padding:5rem 0;background:linear-gradient(135deg,#1a1a2e 0%,var(--nv) 50%,#0a1520 100%);position:relative;overflow:hidden}
+.orphan-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 40%,rgba(200,149,58,.07) 0%,transparent 60%)}
+.orphan-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.orphan-left h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--wh);line-height:1.2;margin-bottom:1.2rem}
+.orphan-left h2 em{font-style:italic;color:var(--gd)}
+.orphan-left p{font-size:.97rem;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:1rem}
+.orphan-facts{display:flex;flex-direction:column;gap:.85rem}
+.of{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:1.2rem 1.4rem;display:flex;gap:1rem;align-items:flex-start}
+.of-num{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--gd);flex-shrink:0;line-height:1;min-width:60px}
+.of-text{font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.6}
+.of-text strong{color:rgba(255,255,255,.8)}
+
+/* SERVICES */
+#services{padding:6rem 0;background:var(--cr)}
+.services-head{text-align:center;margin-bottom:3.5rem}
+.services-head h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--nv);margin-bottom:.75rem}
+.services-head h2 em{font-style:italic;color:var(--gd)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.svc{background:var(--wh);border:1px solid var(--bd);border-radius:var(--r2);padding:2rem;transition:all .25s;text-align:center}
+.svc:hover{box-shadow:var(--sh2);transform:translateY(-3px)}
+.svc-icon{width:60px;height:60px;border-radius:50%;margin:0 auto 1.2rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.svc-icon.gd{background:rgba(200,149,58,.1)}
+.svc-icon.sage{background:rgba(74,124,89,.1)}
+.svc-icon.nv{background:rgba(14,28,47,.08)}
+.svc h4{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--nv);margin-bottom:.6rem}
+.svc p{font-size:.85rem;color:var(--mu);line-height:1.7}
+
+/* THE ASK */
+#ask{padding:6rem 0;background:var(--wh)}
+.ask-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.ask-left h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--nv);line-height:1.2;margin-bottom:1.2rem}
+.ask-left h2 em{font-style:italic;color:var(--gd)}
+.ask-left p{font-size:.97rem;color:var(--mu);line-height:1.8;margin-bottom:1rem}
+.ask-items{display:flex;flex-direction:column;gap:.85rem;margin-top:1.5rem}
+.ai{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.2rem;background:var(--cr);border-radius:var(--r);border-left:3px solid var(--gd)}
+.ai-icon{font-size:1.1rem;flex-shrink:0;margin-top:.1rem}
+.ai-title{font-weight:600;color:var(--nv);font-size:.9rem;margin-bottom:.2rem}
+.ai-text{font-size:.83rem;color:var(--mu);line-height:1.6}
+.donate-card{background:var(--cr);border:1px solid var(--bd);border-radius:var(--r2);overflow:hidden;position:sticky;top:6rem}
+.dc-head{background:var(--nv);padding:2rem}
+.dc-head h3{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--wh);margin-bottom:.4rem}
+.dc-head p{font-size:.83rem;color:rgba(255,255,255,.5)}
+.dc-body{padding:2rem}
+.dc-amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.4rem}
+.dca{border:1.5px solid var(--bd);border-radius:var(--r);padding:.9rem .6rem;text-align:center;cursor:pointer;transition:all .2s;background:var(--wh)}
+.dca:hover,.dca.sel{border-color:var(--gd);background:rgba(200,149,58,.04)}
+.dca-n{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--nv);display:block;line-height:1}
+.dca-i{font-size:.68rem;color:var(--mu);margin-top:.25rem;line-height:1.3}
+.dc-btns{display:flex;flex-direction:column;gap:.65rem}
+.dcb{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;border-radius:var(--r);font-size:.85rem;font-weight:600;transition:all .2s}
+.dcb-gd{background:var(--gd);color:var(--wh)}
+.dcb-gd:hover{background:var(--gd2)}
+.dcb-out{border:1.5px solid var(--bd);color:var(--mid);background:var(--wh)}
+.dcb-out:hover{border-color:var(--gd);color:var(--nv)}
+.dcb-r{font-size:.75rem;opacity:.7;font-weight:400}
+.dc-monthly{margin-top:1.2rem;padding:1.1rem;background:rgba(200,149,58,.06);border:1px solid rgba(200,149,58,.2);border-radius:var(--r);text-align:center}
+.dc-monthly p{font-size:.83rem;color:var(--mid);margin-bottom:.65rem}
+.dc-note{font-size:.73rem;color:var(--lt);text-align:center;margin-top:1rem;font-style:italic;line-height:1.6}
+
+/* TEAM */
+#team{padding:6rem 0;background:var(--cr)}
+.team-head{text-align:center;margin-bottom:3.5rem}
+.team-head h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--nv);margin-bottom:.75rem}
+.team-head h2 em{font-style:italic;color:var(--gd)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2.5rem}
+.tc{background:var(--wh);border:1px solid var(--bd);border-radius:var(--r2);padding:2rem;transition:all .25s;text-align:center}
+.tc:hover{box-shadow:var(--sh);transform:translateY(-2px)}
+.tc-icon{font-size:2.5rem;margin-bottom:1rem;display:block}
+.tc h4{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--nv);margin-bottom:.5rem}
+.tc p{font-size:.85rem;color:var(--mu);line-height:1.7;margin-bottom:1rem}
+.tc a{font-family:var(--mono);font-size:.7rem;color:var(--gd);display:inline-flex;align-items:center;gap:.35rem;transition:gap .2s}
+.tc:hover a{gap:.6rem}
+.trans-row{background:var(--wh);border:1px solid var(--bd);border-radius:var(--r2);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;gap:2rem}
+.tr-item{text-align:center}
+.tr-num{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--nv);display:block;line-height:1}
+.tr-lbl{font-size:.76rem;color:var(--mu);margin-top:.3rem;line-height:1.4}
+
+/* FOUNDER */
+#founder{padding:6rem 0;background:var(--nv)}
+.founder-inner{display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:start}
+.fcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r2);padding:2.5rem;text-align:center}
+.favatar{width:90px;height:90px;border-radius:50%;background:rgba(200,149,58,.15);border:2px solid rgba(200,149,58,.3);margin:0 auto 1.2rem;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--gd)}
+.fname{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--wh);margin-bottom:.2rem}
+.ftitle{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gd);margin-bottom:1.3rem}
+.fdiv{height:1px;background:rgba(255,255,255,.07);margin:1rem 0}
+.fcard p{font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.7;font-style:italic}
+.fcard a{font-family:var(--mono);font-size:.65rem;color:rgba(200,149,58,.6);display:block;margin-top:.6rem}
+.fcontent blockquote{font-family:var(--serif);font-size:clamp(1.1rem,1.8vw,1.35rem);font-style:italic;color:var(--wh);line-height:1.6;margin-bottom:2rem;padding-left:1.4rem;border-left:3px solid var(--gd)}
+.fcontent p{font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:1.1rem}
+.fpull{background:rgba(200,149,58,.08);border:1px solid rgba(200,149,58,.18);border-radius:var(--r2);padding:1.8rem 2rem;margin-top:1.8rem}
+.fpull p{font-family:var(--serif);font-size:1rem;font-style:italic;color:rgba(255,255,255,.82);line-height:1.6;margin:0}
+
+/* INVOLVE */
+#involve{padding:6rem 0;background:var(--wh)}
+.involve-head{text-align:center;margin-bottom:3.5rem}
+.involve-head h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--nv);margin-bottom:.75rem}
+.involve-head h2 em{font-style:italic;color:var(--gd)}
+.involve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.ivc{background:var(--cr);border:1px solid var(--bd);border-radius:var(--r2);padding:2rem;transition:all .25s}
+.ivc:hover{box-shadow:var(--sh);border-color:rgba(200,149,58,.25);transform:translateY(-2px)}
+.ivc-icon{font-size:2rem;margin-bottom:1rem;display:block}
+.ivc h4{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--nv);margin-bottom:.6rem}
+.ivc p{font-size:.85rem;color:var(--mu);line-height:1.7;margin-bottom:1.4rem}
+
+/* HASHTAGS */
+#hashtags{padding:2.5rem 0;background:var(--cr);border-top:1px solid var(--bd)}
+.htags{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.htag{font-family:var(--mono);font-size:.68rem;padding:.3rem .8rem;background:rgba(200,149,58,.08);color:var(--gd);border:1px solid rgba(200,149,58,.18);border-radius:2rem;letter-spacing:.04em}
+
+/* HOTLINES */
+#hotlines{padding:3.5rem 0;background:var(--nv)}
+.hlines{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.hl{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--r2);padding:1.5rem}
+.hl h4{font-family:var(--serif);font-size:.95rem;font-weight:600;color:var(--wh);margin-bottom:.4rem}
+.hl-num{font-family:var(--mono);font-size:1rem;color:var(--gd);display:block;margin-bottom:.3rem}
+.hl-note{font-size:.74rem;color:rgba(255,255,255,.35);line-height:1.5}
+
+/* CTA STRIP */
+#ctastrip{padding:5rem 0;background:var(--gd)}
+.cta-inner{text-align:center}
+.cta-inner h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;color:var(--nv);margin-bottom:.9rem;line-height:1.2}
+.cta-inner p{font-size:1rem;color:rgba(14,28,47,.65);max-width:560px;margin:0 auto 2rem;line-height:1.75}
+.cta-btns{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+
+/* FOOTER */
+footer{background:#060f1a;padding:4rem 0 2.5rem}
+.ft{display:grid;grid-template-columns:2.5fr 1fr 1fr 1.5fr;gap:3rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.05)}
+.ft-brand h3{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--wh);margin-bottom:.4rem}
+.ft-brand p{font-size:.82rem;color:rgba(255,255,255,.38);line-height:1.75;max-width:260px;margin-bottom:1.2rem}
+.ft-meta{font-family:var(--mono);font-size:.62rem;color:rgba(255,255,255,.2);letter-spacing:.05em;line-height:1.9}
+.ft-col h4{font-family:var(--mono);font-size:.65rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.1rem}
+.ft-col ul{display:flex;flex-direction:column;gap:.5rem}
+.ft-col a{font-size:.83rem;color:rgba(255,255,255,.4);transition:color .2s}
+.ft-col a:hover{color:var(--gd)}
+.ft-contact p{font-size:.8rem;color:rgba(255,255,255,.38);line-height:1.7;margin-bottom:.5rem}
+.ft-contact a{color:rgba(200,149,58,.6);transition:color .2s}
+.ft-contact a:hover{color:var(--gd)}
+.ft-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.ft-copy{font-size:.75rem;color:rgba(255,255,255,.2)}
+.ft-tagline{font-family:var(--serif);font-size:.85rem;font-style:italic;color:rgba(255,255,255,.2)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-grid,.crisis-inner,.truth-grid,.sanc-grid,.orphan-inner,.ask-grid,.founder-inner{grid-template-columns:1fr;gap:2.5rem}
+  .donate-card{position:static}
+  .pillars{grid-template-columns:1fr}
+  .services-grid,.team-grid,.involve-grid{grid-template-columns:repeat(2,1fr)}
+  .hlines{grid-template-columns:1fr}
+  .crisis-stats{grid-template-columns:1fr 1fr}
+  .ft{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nlinks,.ndonate{display:none}
+  .hamburger{display:flex}
+  .services-grid,.team-grid,.involve-grid,.hlines{grid-template-columns:1fr}
+  .dc-amounts{grid-template-columns:repeat(2,1fr)}
+  .ft{grid-template-columns:1fr}
+  .ft-bottom{flex-direction:column;text-align:center}
+  .trans-row{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mm" role="dialog">
+  <button class="mclose" onclick="closeMM()">&#x2715;</button>
+  <a href="#crisis" onclick="closeMM()">The Crisis</a>
+  <a href="#mission" onclick="closeMM()">Our Mission</a>
+  <a href="#sanctuary" onclick="closeMM()">The Sanctuary</a>
+  <a href="#services" onclick="closeMM()">Programs</a>
+  <a href="#ask" onclick="closeMM()">Support Us</a>
+  <a href="#team" onclick="closeMM()">Who We Are</a>
+  <a href="#ask" onclick="closeMM()" style="color:var(--gd)">Donate</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-i">
+    <a href="#hero" class="nbrand">
+      <span class="nbrand-name">The Clarity of Charity</span>
+      <span class="nbrand-sub">The Return to Innocence Project</span>
+    </a>
+    <ul class="nlinks" role="list">
+      <li><a href="#crisis">The Crisis</a></li>
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#sanctuary">Sanctuary</a></li>
+      <li><a href="#services">Programs</a></li>
+      <li><a href="#team">Who We Are</a></li>
+    </ul>
+    <a href="#ask" class="ndonate">Build With Us</a>
+    <div class="hamburger" onclick="openMM()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb1" aria-hidden="true"></div>
+  <div class="hero-orb2" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow rv">The Return to Innocence Project</div>
+          <h1 class="rv">Building Sanctuaries<br>For <em>Every</em><br>Innocent Child</h1>
+          <p class="hero-lead rv2">North America's first trauma-informed safe homes for displaced child survivors of trafficking, ages 0 to 7. The site has been found. The community is gathering. The children are waiting.</p>
+          <div class="hero-actions rv3">
+            <a href="https://gofund.me/e2e19d131" class="btn btn-gd" target="_blank" rel="noopener">Build With Us — GoFundMe</a>
+            <a href="#mission" class="btn btn-out">Our Mission</a>
+          </div>
+          <div class="hero-proof rv3">
+            <div class="hp-item"><span class="hp-icon">🏛️</span> CRA Registered #748511078</div>
+            <div class="hp-item"><span class="hp-icon">📍</span> Edmonton, Alberta</div>
+            <div class="hp-item"><span class="hp-icon">🌿</span> Site Identified</div>
+          </div>
+        </div>
+        <div class="hero-card rv2">
+          <div class="hc-top">
+            <h3>Ground Zero Campaign</h3>
+            <p>Founding The Return to Innocence Project</p>
+          </div>
+          <div class="hc-body">
+
+            <div class="hc-stat">
+              <span class="hc-stat-l">Specialized homes (ages 0–7)</span>
+              <span class="hc-stat-r">0 in North America</span>
+            </div>
+            <div class="hc-stat">
+              <span class="hc-stat-l">Organization founded</span>
+              <span class="hc-stat-r">2020</span>
+            </div>
+            <div class="hc-stat">
+              <span class="hc-stat-l">First site</span>
+              <span class="hc-stat-r">Identified ✓</span>
+            </div>
+
+            <div class="hc-ctas">
+              <a href="https://gofund.me/e2e19d131" class="hc-btn hc-btn-gd" target="_blank" rel="noopener">
+                <span>Donate — GoFundMe</span>
+                <span>→</span>
+              </a>
+              <a href="https://www.zeffy.com/en-CA/peer-to-peer/ground-zero-founding-the-return-to-innocence-project" class="hc-btn hc-btn-out" target="_blank" rel="noopener">
+                <span>Zeffy — 0% fees</span>
+                <span>→</span>
+              </a>
+              <a href="https://www.paypal.com/donate/?hosted_button_id=WAK3XVPFY3LQC" class="hc-btn hc-btn-out" target="_blank" rel="noopener">
+                <span>Donate via PayPal</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-i"><div class="scroll-line"></div>scroll</div>
+  </div>
+</section>
+
+<!-- CRISIS STRIP -->
+<section id="crisis">
+  <div class="wrap">
+    <div class="crisis-inner">
+      <div class="rv">
+        <div class="tag tag-gd" style="margin-bottom:1.4rem">Why This Cannot Wait</div>
+        <blockquote class="crisis-quote">
+          "Across all of North America, children who survive trafficking — some as young as infants and toddlers — have almost nowhere specialized to go after rescue."
+          <cite>— Jennifer Coburn, Founder</cite>
+        </blockquote>
+      </div>
+      <div class="crisis-stats rv2">
+        <div class="cs">
+          <span class="cs-num">4M+</span>
+          <div class="cs-desc">People in forced sexual exploitation at any given moment</div>
+          <span class="cs-src">ILO Global Estimates</span>
+        </div>
+        <div class="cs">
+          <span class="cs-num">⅓</span>
+          <div class="cs-desc">Of all detected trafficking victims are children</div>
+          <span class="cs-src">UNODC Global Report</span>
+        </div>
+        <div class="cs">
+          <span class="cs-num">#1</span>
+          <div class="cs-desc">Human trafficking is now the most lucrative crime in the world</div>
+          <span class="cs-src">INTERPOL</span>
+        </div>
+        <div class="cs">
+          <span class="cs-num">0</span>
+          <div class="cs-desc">Specialized residential safe homes for survivors ages 0–7 in North America</div>
+          <span class="cs-src">TCC Research</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE TRUTH -->
+<section id="truth">
+  <div class="wrap">
+    <div class="truth-grid">
+      <div class="rv">
+        <div class="tag tag-nv">A Truth Most Organizations Fear to Name</div>
+        <h2>The gap that rescue<br>leaves <em>behind</em></h2>
+        <div class="truth-callout">
+          <p>These injured young ones will never be able to relate with a normal childhood or healthy children whose innocence remains intact. That is not a tragedy to hide — it is a truth to honour.</p>
+        </div>
+        <div class="truth-body">
+          <p>So we build for them. Communities designed specifically for them. Trauma-informed. Low stimuli. Set in natural environments. Where children who have survived the same darkness can heal together, grow together, and reclaim together what was taken from them.</p>
+          <p>Giving them the care and the tools needed to walk into their own lives with healing, confidence, and a future. That is true freedom. That is The Return to Innocence.</p>
+        </div>
+      </div>
+      <div class="gap-cards rv2">
+        <div class="gap-card">
+          <span class="gap-icon">🔇</span>
+          <div>
+            <div class="gap-title">The Silence Gap</div>
+            <p class="gap-text">Children 0–7 are often pre-verbal or lack the cognitive tools to testify. Without specialized forensic infrastructure, their experiences go undocumented and their abusers walk free.</p>
+          </div>
+        </div>
+        <div class="gap-card">
+          <span class="gap-icon">🏥</span>
+          <div>
+            <div class="gap-title">The Infrastructure Gap</div>
+            <p class="gap-text">Standard foster care and crisis shelters were not built for the complexity of what trafficking survivors carry. Most children cycle back to unsafe environments within months of rescue.</p>
+          </div>
+        </div>
+        <div class="gap-card">
+          <span class="gap-icon">⚖️</span>
+          <div>
+            <div class="gap-title">The Justice Gap</div>
+            <p class="gap-text">Without evidence, without testimony, without an advocate — perpetrators avoid prosecution. Justice requires more than a rescue. It requires the infrastructure to build a case.</p>
+          </div>
+        </div>
+        <div class="gap-card">
+          <span class="gap-icon">🧒</span>
+          <div>
+            <div class="gap-title">The Orphan Crisis</div>
+            <p class="gap-text">Millions of orphaned and displaced children worldwide face extreme vulnerability to exploitation. Projects like The Return to Innocence Project are not optional — they are essential infrastructure the world is missing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION / FOUR PILLARS -->
+<section id="mission">
+  <div class="wrap">
+    <div class="mission-head">
+      <div class="tag tag-gd rv">Operation: The Return to Innocence</div>
+      <h2 class="rv">Our Four Pillars</h2>
+      <p class="body rv2">A complete system — from forensic protection through long-term restoration, advocacy, and sustainable development.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar rv">
+        <div class="pillar-accent gd"></div>
+        <div class="pillar-body">
+          <div class="pillar-num">Pillar One</div>
+          <span class="pillar-icon">🔬</span>
+          <div class="pillar-title">The Forensic Gateway</div>
+          <div class="pillar-sub">Investigative integrity for pre-verbal victims</div>
+          <p>The Observation Atrium provides play-based, non-intrusive evidence gathering. The Truth Vault™ preserves encrypted forensic data ensuring justice is never denied because a child could not speak. A Legacy Key grants survivors sovereign ownership of their history at age 18.</p>
+        </div>
+      </div>
+      <div class="pillar rv2">
+        <div class="pillar-accent sage"></div>
+        <div class="pillar-body">
+          <div class="pillar-num">Pillar Two</div>
+          <span class="pillar-icon">🌿</span>
+          <div class="pillar-title">The Sanctuary</div>
+          <div class="pillar-sub">Long-term residential restoration</div>
+          <p>A trauma-informed residential sanctuary set within vast, unspoiled nature. Low stimulation. 24/7 compassionate guardianship. Five dimensions of healing — Soul, Mind, Body, Heart, and Spirit. Therapeutic playrooms. Homeschooling. Medical care. Location permanently confidential.</p>
+        </div>
+      </div>
+      <div class="pillar rv">
+        <div class="pillar-accent nv"></div>
+        <div class="pillar-body">
+          <div class="pillar-num">Pillar Three</div>
+          <span class="pillar-icon">⚖️</span>
+          <div class="pillar-title">The Sentinel Arm</div>
+          <div class="pillar-sub">Advocacy, prevention, and accountability</div>
+          <p>Changing the laws and the culture surrounding child exploitation. Demanding maximum legal consequences for perpetrators. Public education for parents, caregivers, and communities. Rapid response support for newly rescued children.</p>
+        </div>
+      </div>
+      <div class="pillar rv2">
+        <div class="pillar-accent rd"></div>
+        <div class="pillar-body">
+          <div class="pillar-num">Pillar Four</div>
+          <span class="pillar-icon">🏗️</span>
+          <div class="pillar-title">The Development Engine</div>
+          <div class="pillar-sub">Funding, partnerships, and scaling</div>
+          <p>Building the team, funding architecture, and community that carries this mission from one sanctuary to many. Transparent direct-to-impact funding. PR and speaker bureau. Tech partnerships for Truth Vault infrastructure. Long-term goal: $144M for a 140-acre recovery campus.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SANCTUARY VISION -->
+<section id="sanctuary">
+  <div class="wrap">
+    <div class="sanc-grid">
+      <div class="sanc-left">
+        <div class="tag tag-sage rv">The First Home</div>
+        <h2 class="rv">We have found it.<br><em>Our first sanctuary.</em></h2>
+        <p class="rv2">Tucked within vast, unspoiled nature. Open skies, towering trees, the quiet sounds of the earth healing itself. Far from the chaos that harmed these children. A place where the environment itself begins the work of restoration before a single program begins.</p>
+        <div class="sanc-truth rv2">
+          <p>So we build for them. Communities designed specifically for them. Where children who have survived the same darkness can heal together, grow together, and reclaim together what was taken from them.</p>
+        </div>
+        <div class="rv3" style="margin-top:1.5rem">
+          <a href="https://gofund.me/e2e19d131" class="btn btn-nv" target="_blank" rel="noopener">Help Build This Sanctuary</a>
+        </div>
+      </div>
+      <div class="sanc-feats">
+        <div class="sf rv"><div class="sf-icon">🌲</div><div><div class="sf-title">Nature-Integrated Environment</div><p class="sf-text">Expansive natural landscape — trees, sky, earth, water. The healing environment breathes.</p></div></div>
+        <div class="sf rv"><div class="sf-icon">🏠</div><div><div class="sf-title">Residential Safe Home</div><p class="sf-text">A large main residence where survivors live, learn, grieve, laugh, and heal together. Shared meals. A library. Open spaces.</p></div></div>
+        <div class="sf rv2"><div class="sf-icon">🎮</div><div><div class="sf-title">Therapeutic Playroom</div><p class="sf-text">Play is not a luxury — it is medicine. A uniquely designed space where healing happens through imagination and joy.</p></div></div>
+        <div class="sf rv2"><div class="sf-icon">📚</div><div><div class="sf-title">Trauma-Informed Education</div><p class="sf-text">Homeschool programming built around each child's healing trajectory — not performance, not pressure.</p></div></div>
+        <div class="sf rv3"><div class="sf-icon">🩺</div><div><div class="sf-title">24/7 Professional Care</div><p class="sf-text">Staffed around the clock with trauma-trained medical and therapeutic professionals.</p></div></div>
+        <div class="sf rv3"><div class="sf-icon">🔒</div><div><div class="sf-title">Permanently Confidential</div><p class="sf-text">The location of our sanctuary is not publicly disclosed — protecting children is our highest obligation.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORPHAN CRISIS -->
+<section id="orphan">
+  <div class="orphan-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="orphan-inner">
+      <div>
+        <div class="tag tag-gd rv" style="border-color:rgba(200,149,58,.35)">A Critical Global Shortage</div>
+        <h2 class="rv">The orphan crisis demands<br><em>projects like this one</em></h2>
+        <p class="rv2" style="color:rgba(255,255,255,.6);line-height:1.8">There is a critical global shortage of specialized, long-term residential care for orphaned and displaced children who have survived exploitation. Standard systems were not designed for them. The gap is not a policy oversight — it is a structural failure. And projects like The Return to Innocence Project are not optional extras — they are the missing infrastructure the world needs to build now.</p>
+        <div style="margin-top:1.8rem" class="rv3">
+          <a href="https://gofund.me/e2e19d131" class="btn btn-gd" target="_blank" rel="noopener">Be Part of the Solution</a>
+        </div>
+      </div>
+      <div class="orphan-facts rv2">
+        <div class="of">
+          <span class="of-num">8M+</span>
+          <p class="of-text"><strong>Children in institutional care worldwide</strong> — the majority of whom have at least one living parent. They are there because adequate community care does not exist.</p>
+        </div>
+        <div class="of">
+          <span class="of-num">⅓</span>
+          <p class="of-text"><strong>Of trafficking victims are children</strong> — with orphaned and displaced children disproportionately targeted by traffickers who exploit the absence of protective adults.</p>
+        </div>
+        <div class="of">
+          <span class="of-num">0</span>
+          <p class="of-text"><strong>Specialized residential facilities in North America</strong> built specifically for displaced trafficking survivors ages 0 to 7. The Clarity of Charity is building the first.</p>
+        </div>
+        <div class="of">
+          <span class="of-num">$144M</span>
+          <p class="of-text"><strong>Long-term vision</strong> — a 140-acre rehabilitation and recovery campus with an 11,000 sq ft healing facility for child survivors. Every founding dollar is a foundation stone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS / SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="services-head">
+      <div class="tag tag-gd rv">What We Provide</div>
+      <h2 class="rv">Healing the whole child —<br><em>mind, body, and spirit</em></h2>
+      <p class="rv2" style="max-width:560px;margin:0 auto;text-align:center;color:var(--mu);line-height:1.75">Our programs address every dimension of recovery for children who have survived the unsurvivable.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc rv">
+        <div class="svc-icon gd">🧠</div>
+        <h4>Trauma Psychology</h4>
+        <p>Psychologists providing direct trauma support and stabilization services to rescued children. Trauma-focused cognitive behavioural therapy adapted for ages 0–7. Attachment-based therapeutic relationships.</p>
+      </div>
+      <div class="svc rv2">
+        <div class="svc-icon sage">🩺</div>
+        <h4>Medical & Somatic Care</h4>
+        <p>Comprehensive pediatric medical assessment within 5 days of arrival. Somatic experiencing and body-based trauma processing. Nutritional restoration and holistic health management.</p>
+      </div>
+      <div class="svc rv3">
+        <div class="svc-icon nv">🌿</div>
+        <h4>Nature & Play Therapy</h4>
+        <p>Therapeutic play as daily medicine. Outdoor restoration spaces. Creative expression through art, music, and movement. Nature connection as a core healing modality.</p>
+      </div>
+      <div class="svc rv">
+        <div class="svc-icon gd">📚</div>
+        <h4>Developmental Education</h4>
+        <p>Trauma-informed homeschooling curriculum built around each child's healing trajectory. Developmental programming for ages 0–3. Learning as restoration, not performance.</p>
+      </div>
+      <div class="svc rv2">
+        <div class="svc-icon sage">🔬</div>
+        <h4>Forensic Gateway</h4>
+        <p>The Observation Atrium provides play-based forensic evidence gathering. The Truth Vault™ preserves encrypted data ensuring court-admissible evidence for every child.</p>
+      </div>
+      <div class="svc rv3">
+        <div class="svc-icon nv">🔄</div>
+        <h4>Re-Integration Support</h4>
+        <p>Long-term transition planning beginning at intake. Supported placement into safe environments. 90-day minimum post-discharge follow-up to prevent re-exploitation.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:1rem;padding:.75rem 1.2rem;background:rgba(139,26,26,.06);border-radius:var(--r);border:1px solid rgba(139,26,26,.15);max-width:700px;margin-left:auto;margin-right:auto" class="rv">
+      <p style="font-size:.88rem;color:var(--rd);font-weight:600">Accountability matters. Protection matters. Recovery matters.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE ASK -->
+<section id="ask">
+  <div class="wrap">
+    <div class="ask-grid">
+      <div>
+        <div class="tag tag-gd rv">Support the Mission</div>
+        <h2 class="rv">The foundation that lets<br><em>everything else happen</em></h2>
+        <p class="rv2" style="color:var(--mu);line-height:1.8">I have the vision. What I need now is the foundation it stands on. This campaign is for the startup costs that turn a registered nonprofit into a fully operational organization — one that can receive major grant funding, issue tax receipts to donors, carry proper insurance, and legally and responsibly begin opening that first door.</p>
+        <p class="rv2" style="color:var(--mu);line-height:1.8">One layer at a time. One cornerstone at a time.</p>
+        <div class="ask-items rv2">
+          <div class="ai">
+            <span class="ai-icon">📋</span>
+            <div>
+              <div class="ai-title">Forming a Society — Alberta Requirements</div>
+              <p class="ai-text">A prerequisite for registered charity status and every significant funding opportunity that follows.</p>
+            </div>
+          </div>
+          <div class="ai">
+            <span class="ai-icon">🏛️</span>
+            <div>
+              <div class="ai-title">Registered Charity Status — CRA T2050</div>
+              <p class="ai-text">Unlocks grant funding, official tax receipting, and institutional partnerships.</p>
+            </div>
+          </div>
+          <div class="ai">
+            <span class="ai-icon">🛡️</span>
+            <div>
+              <div class="ai-title">Directors & Officers Insurance</div>
+              <p class="ai-text">Required to formalize our board and operate with the governance structure major funders expect.</p>
+            </div>
+          </div>
+          <div class="ai">
+            <span class="ai-icon">⚖️</span>
+            <div>
+              <div class="ai-title">Legal & Compliance Support</div>
+              <p class="ai-text">Building on a foundation strong enough to hold everything we are building on top of it.</p>
+            </div>
+          </div>
+          <div class="ai">
+            <span class="ai-icon">🏡</span>
+            <div>
+              <div class="ai-title">Initial Property Costs</div>
+              <p class="ai-text">Moving from site identified to site secured — the first physical cornerstone of the sanctuary.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:2rem;padding:1.5rem 2rem;background:var(--cr);border-radius:var(--r2);border-left:3px solid var(--gd)" class="rv3">
+          <p style="font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--nv);line-height:1.7;margin-bottom:.5rem">"We have different gifts, according to the grace given to each of us." — Romans 12:6</p>
+          <p style="font-size:.88rem;color:var(--mu)">Time. Money. Skills. Talents. Whatever you carry — there is a place for it here.</p>
+        </div>
+      </div>
+      <div class="donate-card rv2">
+        <div class="dc-head">
+          <h3>Build With Us</h3>
+          <p>Every dollar builds the foundation the children need</p>
+        </div>
+        <div class="dc-body">
+          <div class="dc-amounts">
+            <div class="dca" onclick="selAmt(this)"><span class="dca-n">$25</span><div class="dca-i">A brick</div></div>
+            <div class="dca" onclick="selAmt(this)"><span class="dca-n">$50</span><div class="dca-i">A cornerstone</div></div>
+            <div class="dca" onclick="selAmt(this)"><span class="dca-n">$100</span><div class="dca-i">A foundation stone</div></div>
+            <div class="dca" onclick="selAmt(this)"><span class="dca-n">$250</span><div class="dca-i">A wall</div></div>
+            <div class="dca" onclick="selAmt(this)"><span class="dca-n">$500</span><div class="dca-i">A room</div></div>
+            <div class="dca" onclick="selAmt(this)"><span class="dca-n">Other</span><div class="dca-i">Your choice</div></div>
+          </div>
+          <div class="dc-btns">
+            <a href="https://gofund.me/e2e19d131" class="dcb dcb-gd" target="_blank" rel="noopener"><span>💚 GoFundMe Campaign</span><span class="dcb-r">Primary</span></a>
+            <a href="https://www.zeffy.com/en-CA/peer-to-peer/ground-zero-founding-the-return-to-innocence-project" class="dcb dcb-out" target="_blank" rel="noopener"><span>🏗️ Zeffy — Ground Zero</span><span class="dcb-r">0% fees</span></a>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=WAK3XVPFY3LQC" class="dcb dcb-out" target="_blank" rel="noopener"><span>💳 PayPal</span><span class="dcb-r">Secure</span></a>
+            <a href="https://claritycharity.gumroad.com/l/ogyyn" class="dcb dcb-out" target="_blank" rel="noopener"><span>📖 Awareness Bundle</span><span class="dcb-r">$11.11</span></a>
+          </div>
+          <div class="dc-monthly">
+            <p><strong>Give monthly.</strong> Recurring gifts are the most powerful way to support long-term care.</p>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=WAK3XVPFY3LQC" class="btn btn-nv" style="font-size:.8rem;padding:.65rem 1.4rem;border-radius:50px" target="_blank" rel="noopener">Set Up Monthly Giving</a>
+          </div>
+          <p class="dc-note">The gift is not as precious as the thought. 83% of donations go directly to programs. CRA #748511078 · <a href="mailto:fundraising@theclarityofcharity.org" style="color:var(--gd)">fundraising@theclarityofcharity.org</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="wrap">
+    <div class="team-head">
+      <div class="tag tag-gd rv">Who Is Building This</div>
+      <h2 class="rv">A founder-led organization with a<br><em>growing community behind it</em></h2>
+      <p class="rv2" style="max-width:520px;margin:0 auto;text-align:center;color:var(--mu);line-height:1.75">In our founding stage — transparent about where we are and deliberate about where we are going.</p>
+    </div>
+    <div class="team-grid">
+      <div class="tc rv">
+        <span class="tc-icon">👑</span>
+        <h4>Leadership</h4>
+        <p><strong>Jennifer Coburn</strong> — Founder & Executive Director. Edmonton, Alberta. Over a decade building the mission the world wasn't ready for — and refusing to stop.</p>
+        <a href="mailto:jennifercoburn@theclarityofcharity.org">Contact Jennifer →</a>
+      </div>
+      <div class="tc rv2">
+        <span class="tc-icon">🤝</span>
+        <h4>Advisory Board</h4>
+        <p>Actively recruiting advisors in <strong>trauma psychology, child welfare, nonprofit governance, and early childhood development</strong>. Founding roles — your expertise becomes part of what this is built on.</p>
+        <a href="mailto:volunteer@theclarityofcharity.org">Apply to Advise →</a>
+      </div>
+      <div class="tc rv3">
+        <span class="tc-icon">📊</span>
+        <h4>Governance & Transparency</h4>
+        <p>CRA-registered nonprofit (CRA #748511078). Full Governance Manual and Policy & Procedure Manual published. Financial summaries available to all donors upon request.</p>
+        <a href="mailto:fundraising@theclarityofcharity.org">Request Summary →</a>
+      </div>
+    </div>
+    <div class="trans-row rv">
+      <div class="tr-item"><span class="tr-num">83%</span><div class="tr-lbl">of donations go directly<br>to programs and mission</div></div>
+      <div class="tr-item"><span class="tr-num">2020</span><div class="tr-lbl">Year incorporated<br>CRA #748511078</div></div>
+      <div class="tr-item"><span class="tr-num">19</span><div class="tr-lbl">Volunteer roles<br>open now</div></div>
+      <div class="tr-item"><span class="tr-num">0–7</span><div class="tr-lbl">Ages served — the gap<br>no one else is filling</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="wrap">
+    <div class="founder-inner">
+      <div class="rv">
+        <div class="fcard">
+          <div class="favatar">JC</div>
+          <div class="fname">Jennifer Coburn</div>
+          <div class="ftitle">Founder & Executive Director</div>
+          <div class="fdiv"></div>
+          <p>Edmonton, Alberta, Canada</p>
+          <div class="fdiv"></div>
+          <p>A decade building the mission the world wasn't ready for — and refusing to stop.</p>
+          <a href="mailto:jennifercoburn@theclarityofcharity.org">jennifercoburn@theclarityofcharity.org</a>
+        </div>
+      </div>
+      <div class="fcontent rv2">
+        <div class="tag tag-gd" style="border-color:rgba(200,149,58,.35)">About the Founder</div>
+        <blockquote>"The darkness always knew who she was. Now the hunted has become the hunter."</blockquote>
+        <p>Our founder is a child survivor herself. The darkness found her early — and found her more than once. Not trafficked, but as so many children have experienced — exploited and sexually assaulted. Innocence shattered.</p>
+        <p>And when her own journey led her deep into the truth about what is being done to children, she recognized it from the inside. She wasn't supposed to know. But she did. And she couldn't stay quiet.</p>
+        <p>Trauma steals one's voice. At times she withdrew — nearly abandoning what she believes is her soul mission and the building of this organization because of it. She didn't.</p>
+        <p>What was done in the dark is finally coming to light — for healing. The Clarity of Charity is what this decade of standing alone was always manifesting. It is time.</p>
+        <div class="fpull">
+          <p>"We have different gifts, according to the grace given to each of us." — Romans 12:6<br><br>Time. Money. Skills. Talents. Whatever you carry — there is a place for it here.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GET INVOLVED -->
+<section id="involve">
+  <div class="wrap">
+    <div class="involve-head">
+      <div class="tag tag-gd rv">There Is a Place for It Here</div>
+      <h2 class="rv">If you have ever wanted to be part of<br><em>building something that has never existed</em></h2>
+      <p class="rv2" style="max-width:580px;margin:0 auto;text-align:center;color:var(--mu);line-height:1.75">This is that moment. The site has been found. The community is gathering. The children are waiting.</p>
+    </div>
+    <div class="involve-grid">
+      <div class="ivc rv">
+        <span class="ivc-icon">🙌</span>
+        <h4>Volunteer</h4>
+        <p>19 volunteer positions open now — governance, communications, fundraising, technology, and spiritual support. Advisory board seats available for qualified professionals.</p>
+        <a href="mailto:volunteer@theclarityofcharity.org" class="btn btn-nv" style="font-size:.82rem;padding:.7rem 1.6rem;border-radius:50px">Apply to Volunteer</a>
+      </div>
+      <div class="ivc rv2">
+        <span class="ivc-icon">📣</span>
+        <h4>Peer-to-Peer Fundraise</h4>
+        <p>Start your own fundraising page on behalf of The Clarity of Charity. Your birthday. Your network. Your marathon. Your story. Every cornerstone matters.</p>
+        <a href="https://www.zeffy.com/en-CA/peer-to-peer/ground-zero-founding-the-return-to-innocence-project" class="btn btn-out" style="font-size:.82rem;padding:.7rem 1.6rem;border-radius:50px" target="_blank" rel="noopener">Start a Fundraiser</a>
+      </div>
+      <div class="ivc rv3">
+        <span class="ivc-icon">🤝</span>
+        <h4>Partner With Us</h4>
+        <p>Corporate sponsors, gifts in kind, technology partners, and community organizations — if your values align with protecting children, there is a place for you in this mission.</p>
+        <a href="mailto:jennifercoburn@theclarityofcharity.org?subject=Partnership%20Inquiry" class="btn btn-out" style="font-size:.82rem;padding:.7rem 1.6rem;border-radius:50px">Discuss Partnership</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HASHTAGS -->
+<section id="hashtags">
+  <div class="wrap">
+    <div class="htags">
+      <span class="htag">#HumanTraffickingAwareness</span>
+      <span class="htag">#ChildProtection</span>
+      <span class="htag">#Justice</span>
+      <span class="htag">#EndExploitation</span>
+      <span class="htag">#ProtectChildren</span>
+      <span class="htag">#InternationalCooperation</span>
+      <span class="htag">#SafetyForChildren</span>
+      <span class="htag">#ReturnToInnocence</span>
+      <span class="htag">#TheReturnToInnocence</span>
+      <span class="htag">#ChildSurvivor</span>
+      <span class="htag">#TraumaInformedCare</span>
+      <span class="htag">#BuildWithUs</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOTLINES -->
+<section id="hotlines">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:2rem">
+      <div class="tag" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.12)">If You or Someone You Know Needs Help Right Now</div>
+    </div>
+    <div class="hlines">
+      <div class="hl"><h4>Canadian Human Trafficking Hotline</h4><span class="hl-num">1-833-900-1010</span><span class="hl-note">24/7 · Bilingual · Confidential · Canada-wide</span></div>
+      <div class="hl"><h4>National Human Trafficking Hotline (USA)</h4><span class="hl-num">1-888-373-7888</span><span class="hl-note">24/7 · Text: 233733 · BeFree</span></div>
+      <div class="hl"><h4>Alberta Child Abuse Hotline</h4><span class="hl-num">1-800-387-5437</span><span class="hl-note">24/7 · Mandatory reporting line · Alberta</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section id="ctastrip">
+  <div class="wrap">
+    <div class="cta-inner">
+      <h2>The site has been found.<br>The community is gathering.<br>The children are waiting.</h2>
+      <p>If you have ever wanted to be part of building something that has never existed before in North America — something that looks at the youngest, most wounded children on this continent and says you belong somewhere designed for you — this is that moment.</p>
+      <div class="cta-btns">
+        <a href="https://gofund.me/e2e19d131" class="btn btn-nv" target="_blank" rel="noopener">Build With Us — GoFundMe</a>
+        <a href="mailto:volunteer@theclarityofcharity.org" class="btn btn-out">Volunteer</a>
+        <a href="https://www.zeffy.com/en-CA/peer-to-peer/ground-zero-founding-the-return-to-innocence-project" class="btn btn-out" target="_blank" rel="noopener">Start a Fundraiser</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div class="ft-brand">
+        <h3>The Clarity of Charity</h3>
+        <p>Building North America's first trauma-informed safe homes for displaced child survivors of trafficking, ages 0 to 7. The Return to Innocence Project.</p>
+        <div class="ft-meta">CRA Non-Profit #748511078<br>Edmonton, Alberta, Canada<br>theclarityofcharity.org</div>
+      </div>
+      <div class="ft-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#crisis">The Crisis</a></li>
+          <li><a href="#truth">The Truth</a></li>
+          <li><a href="#mission">Our Mission</a></li>
+          <li><a href="#sanctuary">The Sanctuary</a></li>
+          <li><a href="#services">Programs</a></li>
+          <li><a href="#orphan">The Orphan Crisis</a></li>
+          <li><a href="#founder">Our Founder</a></li>
+          <li><a href="#team">Who We Are</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="mailto:volunteer@theclarityofcharity.org">Volunteer</a></li>
+          <li><a href="https://gofund.me/e2e19d131" target="_blank" rel="noopener">GoFundMe</a></li>
+          <li><a href="https://www.zeffy.com/en-CA/peer-to-peer/ground-zero-founding-the-return-to-innocence-project" target="_blank" rel="noopener">Peer-to-Peer Fundraise</a></li>
+          <li><a href="https://www.paypal.com/donate/?hosted_button_id=WAK3XVPFY3LQC" target="_blank" rel="noopener">Donate via PayPal</a></li>
+          <li><a href="https://claritycharity.gumroad.com/l/ogyyn" target="_blank" rel="noopener">Awareness Bundle</a></li>
+          <li><a href="https://afundraisingmerchshop.com" target="_blank" rel="noopener">Awareness Merch</a></li>
+        </ul>
+      </div>
+      <div class="ft-contact ft-col">
+        <h4>Contact</h4>
+        <p>General: <a href="mailto:contact@theclarityofcharity.org">contact@theclarityofcharity.org</a></p>
+        <p>Volunteer: <a href="mailto:volunteer@theclarityofcharity.org">volunteer@theclarityofcharity.org</a></p>
+        <p>Jennifer: <a href="mailto:jennifercoburn@theclarityofcharity.org">jennifercoburn@theclarityofcharity.org</a></p>
+        <p>Donations: <a href="mailto:fundraising@theclarityofcharity.org">fundraising@theclarityofcharity.org</a></p>
+        <p style="margin-top:.75rem">GoFundMe: <a href="https://gofund.me/e2e19d131" target="_blank" rel="noopener">gofund.me/e2e19d131</a></p>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span class="ft-copy">&copy; 2026 The Clarity of Charity — CRA #748511078</span>
+      <span class="ft-tagline">What was done in the dark is being exposed — so healing can begin.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// NAV
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').style.boxShadow=scrollY>20?'0 2px 20px rgba(0,0,0,.08)':'none';
+},{passive:true});
+// MOBILE
+function openMM(){document.getElementById('mm').classList.add('open');document.body.style.overflow='hidden';}
+function closeMM(){document.getElementById('mm').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMM();});
+// SCROLL REVEAL
+var obs=new IntersectionObserver(function(en){
+  en.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis');});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv,.rv2,.rv3').forEach(function(el){obs.observe(el);});
+// DONATE AMOUNTS
+function selAmt(el){document.querySelectorAll('.dca').forEach(function(a){a.classList.remove('sel');});el.classList.add('sel');}
+</script>
+</body>
+</html>
